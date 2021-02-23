@@ -15,7 +15,7 @@
 #include "Time.h"
 #include "SpriteRenderComponent.h"
 #include "ExitCommand.h"
-
+#include "ToggleDebugWindowCommand.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -110,8 +110,15 @@ void dae::Minigin::Run()
 		exitAction.controllerButton = dae::ControllerButton::Start;
 		exitAction.pCommand = new ExitCommand(doContinue);
 		exitAction.inputType = dae::InputType::keyDown;
-
 		input.AddAction(std::move(exitAction));
+
+		InputAction toggleWindowAction{};
+		toggleWindowAction.controllerButton = dae::ControllerButton::ButtonA;
+		toggleWindowAction.inputType = dae::InputType::keyDown;
+		toggleWindowAction.pCommand = new ToggleDebugCommand();
+		input.AddAction(std::move(toggleWindowAction));
+
+
 		while (doContinue)
 		{
 			Time::GetInstance()->UpdateTime();

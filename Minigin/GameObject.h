@@ -34,7 +34,7 @@ namespace dae
 	{
 		for (Component* pComponent : m_Components)
 		{
-			if (typeid(T).hash_code() == typeid(*pComponent).hash_code())
+			if (typeid(T) == typeid(*pComponent))
 			{
 				return static_cast<T*>(pComponent);
 			}
