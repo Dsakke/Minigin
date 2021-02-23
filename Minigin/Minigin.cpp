@@ -14,6 +14,7 @@
 #include "FPSComponent.h"
 #include "Time.h"
 #include "SpriteRenderComponent.h"
+#include "ExitCommand.h"
 
 
 using namespace std;
@@ -104,12 +105,19 @@ void dae::Minigin::Run()
 		auto& input = InputManager::GetInstance();
 
 		bool doContinue = true;
+
+		dae::InputAction exitAction{};
+		exitAction.controllerButton = dae::ControllerButton::Start;
+		exitAction.pCommand = new ExitCommand(doContinue);
+		exitAction.inputType = dae::InputType::keyDown;
+
+		input.AddAction(std::move(exitAction));
 		while (doContinue)
 		{
 			Time::GetInstance()->UpdateTime();
 			const auto currentTime = high_resolution_clock::now();
 			
-			doContinue = input.ProcessInput();
+			input.ProcessInput();
 			sceneManager.Update();
 			renderer.Render();
 			
