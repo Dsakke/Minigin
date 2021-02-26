@@ -7,18 +7,6 @@
 
 dae::InputManager::~InputManager()
 {
-	for (InputAction& action : m_KeyDownActions)
-	{
-		delete action.pCommand;
-	}
-	for (InputAction& action : m_KeyPressedActions)
-	{
-		delete action.pCommand;
-	}
-	for (InputAction& action : m_KeyUpActions)
-	{
-		delete action.pCommand;
-	}
 }
 
 void dae::InputManager::ProcessInput()
@@ -30,30 +18,30 @@ void dae::InputManager::ProcessInput()
 
 	for (InputAction& action : m_KeyDownActions)
 	{
-		if (m_ControllerState.Gamepad.wButtons & static_cast<WORD>(action.controllerButton) & ~m_PrevControllerState.Gamepad.wButtons)
+		if (m_ControllerState.Gamepad.wButtons & static_cast<WORD>(action.GetControllerButton()) & ~m_PrevControllerState.Gamepad.wButtons)
 		{
-			action.pCommand->Execute();
+			action.GetCommand()->Execute();
 		}
 	}
 	for (InputAction& action  : m_KeyUpActions)
 	{
-			if (m_PrevControllerState.Gamepad.wButtons & static_cast<WORD>(action.controllerButton) & ~m_ControllerState.Gamepad.wButtons)
-			{
-				action.pCommand->Execute();
-			}
+		if (m_PrevControllerState.Gamepad.wButtons & static_cast<WORD>(action.GetControllerButton()) & ~m_ControllerState.Gamepad.wButtons)
+		{
+			action.GetCommand()->Execute();
+		}
 	}
 	for (InputAction& action : m_KeyPressedActions)
 	{		
-			if (m_ControllerState.Gamepad.wButtons & static_cast<WORD>(action.controllerButton))
-			{
-				action.pCommand->Execute();
-			}
+		if (m_ControllerState.Gamepad.wButtons & static_cast<WORD>(action.GetControllerButton()))
+		{
+			action.GetCommand()->Execute();
+		}
 	}
 
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT) {
-			m_KeyDownActions[0].pCommand->Execute(); // dirty temp fix, do change
+			m_KeyDownActions[0].GetCommand()->Execute(); // dirty temp fix, do change
 		}
 		if (e.type == SDL_KEYDOWN) {
 
@@ -77,17 +65,47 @@ bool dae::InputManager::IsPressed(ControllerButton button) const
 
 void dae::InputManager::AddAction(InputAction&& action)
 {
-	if (action.inputType == InputType::keyDown)
+	if (action.GetType() == InputType::keyDown)
 	{
 		m_KeyDownActions.push_back(action);
 	}
-	else if (action.inputType == InputType::keyUp)
+	else if (action.GetType() == InputType::keyUp)
 	{
 		m_KeyUpActions.push_back(action);
 	}
-	else if (action.inputType == InputType::keyUp)
+	else if (action.GetType() == InputType::keyUp)
 	{
 		m_KeyUpActions.push_back(action);
 	}
-	action.pCommand = nullptr;
+}
+
+dae::InputAction::InputAction(std::shared_ptr<Command> pCommand, InputType inputType, ControllerButton controllerButton, int keyBoardCode)
+	: m_pCommand{pCommand}
+	, m_InputType{inputType}
+	, m_ControllerButton{controllerButton}
+	, m_KeyboardCode{ keyBoardCode }
+{
+
+}
+
+
+
+inline std::shared_ptr<Command> dae::InputAction::GetCommand()
+{
+	return m_pCommand;
+}
+
+inline dae::InputType dae::InputAction::GetType() const
+{
+	return m_InputType;
+}
+
+inline dae::ControllerButton dae::InputAction::GetControllerButton() const
+{
+	return m_ControllerButton;
+}
+
+inline int dae::InputAction::GetKeyboardCode() const
+{
+	return m_KeyboardCode;
 }

@@ -106,16 +106,10 @@ void dae::Minigin::Run()
 
 		bool doContinue = true;
 
-		dae::InputAction exitAction{};
-		exitAction.controllerButton = dae::ControllerButton::Start;
-		exitAction.pCommand = new ExitCommand(doContinue);
-		exitAction.inputType = dae::InputType::keyDown;
+		dae::InputAction exitAction{ std::make_shared<ExitCommand>(doContinue), dae::InputType::keyDown, dae::ControllerButton::Start, 27  };
 		input.AddAction(std::move(exitAction));
 
-		InputAction toggleWindowAction{};
-		toggleWindowAction.controllerButton = dae::ControllerButton::ButtonA;
-		toggleWindowAction.inputType = dae::InputType::keyDown;
-		toggleWindowAction.pCommand = new ToggleDebugCommand();
+		InputAction toggleWindowAction{std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::ButtonA, 65};
 		input.AddAction(std::move(toggleWindowAction));
 
 

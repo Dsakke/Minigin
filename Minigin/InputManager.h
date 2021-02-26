@@ -35,12 +35,23 @@ namespace dae
 		KeyPressed
 	};
 
-	struct InputAction
+	// TODO: InputAction doesnt RAII
+	class InputAction
 	{
-		Command* pCommand;
-		InputType inputType;
-		ControllerButton controllerButton;
-		int keyboardCode;
+	public:
+		InputAction(std::shared_ptr<Command> pCommand, InputType inputType, ControllerButton controllerButton, int keyBoardCode );
+
+
+		inline std::shared_ptr<Command> GetCommand();
+		inline InputType GetType() const;
+		inline ControllerButton GetControllerButton() const;
+		inline int GetKeyboardCode() const;
+
+	private:
+		std::shared_ptr<Command> m_pCommand;
+		InputType m_InputType;
+		ControllerButton m_ControllerButton;
+		int m_KeyboardCode;
 	};
 
 
@@ -52,7 +63,7 @@ namespace dae
 		void ProcessInput();
 		bool IsPressed(ControllerButton button) const;
 
-		void AddAction(InputAction&& action); // we want to leave the given action in an invalid state as to not delete the command twice
+		void AddAction(InputAction&& action); 
 
 
 	private:
@@ -66,6 +77,7 @@ namespace dae
 		InputManager() = default;
 
 		friend class Singleton<InputManager>;
+
 
 	};
 }
