@@ -5,7 +5,7 @@
 namespace dae
 {
 	class Texture2D;
-	class SpriteRenderComponent : public Component
+	class SpriteRenderComponent final : public Component
 	{
 	public:
 		SpriteRenderComponent();
