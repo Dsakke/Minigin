@@ -9,12 +9,12 @@ namespace dae
 {
 	class Font;	
 	class Texture2D;
-	class TextComponent : public Component
+	class TextComponent final : public Component
 	{
 	public:
 		TextComponent(std::shared_ptr<Font> font);
 		TextComponent(const std::string& text, std::shared_ptr<Font> font);
-		virtual ~TextComponent() = default;
+		~TextComponent() = default;
 		TextComponent(const TextComponent&) = delete;
 		TextComponent(TextComponent&&) = delete;
 		TextComponent& operator=(const TextComponent&) = delete;
