@@ -1,7 +1,7 @@
 #pragma once
 #include "Command.h"
 
-class ExitCommand : public Command
+class ExitCommand final : public Command
 {
 public:
 	ExitCommand(bool& doContinue);
