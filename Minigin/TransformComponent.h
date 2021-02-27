@@ -5,7 +5,7 @@
 #include "Transform.h"
 namespace dae
 {
-	class TransformComponent : public Component
+	class TransformComponent final : public Component
 	{
 	public:
 		TransformComponent();
