@@ -19,6 +19,8 @@
 #include "QBertComponent.h"
 #include "LifeTrackerComponent.h"
 #include "DiedCommand.h"
+#include "ScoreComponent.h"
+#include "GainScoreCommand.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -90,20 +92,61 @@ void dae::Minigin::LoadGame() const
 	pLiveDisplay->AddComponent(pLiveTransformComponent);
 	scene.Add(pLiveDisplay);
 
+	auto pScoreDisplay = std::make_shared<GameObject>();
+	auto pScoreComponent = std::make_shared<ScoreComponent>();
+	auto pScoreTransform = std::make_shared<TransformComponent>(TransformComponent{ 300, 200, 0 });
+	auto pScoreText = std::make_shared<TextComponent>(font);
+	pScoreDisplay->AddComponent(pScoreComponent);
+	pScoreDisplay->AddComponent(pScoreTransform);
+	pScoreDisplay->AddComponent(pScoreText);
+	scene.Add(pScoreDisplay);
+
 	auto pQbertObject = std::make_shared<GameObject>();
 	auto pQBertComponent{ std::make_shared<QBertComponent>() };
 	pQBertComponent->AddObserver(pLiveComponent);
+	pQBertComponent->AddObserver(pScoreComponent);
 	pQbertObject->AddComponent(pQBertComponent);
 	scene.Add(pQbertObject);
 
+
+	auto pLiveDisplay2 = std::make_shared<GameObject>();
+	auto pLiveComponent2 = std::make_shared<LifeTrackerComponent>();
+	pLiveDisplay2->AddComponent(pLiveComponent2);
+	auto pLiveTextComponent2 = std::make_shared<TextComponent>(font);
+	pLiveDisplay2->AddComponent(pLiveTextComponent2);
+	auto pLiveTransformComponent2{ std::make_shared<TransformComponent>(TransformComponent{80, 80, 0}) };
+	pLiveDisplay2->AddComponent(pLiveTransformComponent2);
+	scene.Add(pLiveDisplay2);
+
+	auto pScoreDisplay2 = std::make_shared<GameObject>();
+	auto pScoreComponent2 = std::make_shared<ScoreComponent>();
+	auto pScoreTransform2 = std::make_shared<TransformComponent>(TransformComponent{ 80, 200, 0 });
+	auto pScoreText2 = std::make_shared<TextComponent>(font);
+	pScoreDisplay2->AddComponent(pScoreComponent2);
+	pScoreDisplay2->AddComponent(pScoreTransform2);
+	pScoreDisplay2->AddComponent(pScoreText2);
+	scene.Add(pScoreDisplay2);
+
+	auto pQbertObject2 = std::make_shared<GameObject>();
+	auto pQBertComponent2{ std::make_shared<QBertComponent>() };
+	pQBertComponent2->AddObserver(pLiveComponent2);
+	pQBertComponent2->AddObserver(pScoreComponent2);
+	pQbertObject->AddComponent(pQBertComponent2);
+	scene.Add(pQbertObject2);
 
 	// Add inputs
 	auto& input = InputManager::GetInstance();
 	InputAction dieAction{ std::make_shared<DiedCommand>(pQBertComponent), dae::InputType::keyDown, dae::ControllerButton::ButtonB, -1 };
 	input.AddAction(std::move(dieAction));
 
+	InputAction gainScoreAction{ std::make_shared<GainScoreCommand>(pQBertComponent), dae::InputType::keyDown, dae::ControllerButton::ButtonA, -1 };
+	input.AddAction(std::move(gainScoreAction));
 
-	
+	InputAction dieAction2{ std::make_shared<DiedCommand>(pQBertComponent2), dae::InputType::keyDown, dae::ControllerButton::ButtonX, -1 };
+	input.AddAction(std::move(dieAction2));
+
+	InputAction gainScoreAction2{ std::make_shared<GainScoreCommand>(pQBertComponent2), dae::InputType::keyDown, dae::ControllerButton::ButtonY, -1 };
+	input.AddAction(std::move(gainScoreAction2));
 }
 
 void dae::Minigin::Cleanup()
@@ -134,7 +177,7 @@ void dae::Minigin::Run()
 		dae::InputAction exitAction{ std::make_shared<ExitCommand>(doContinue), dae::InputType::keyDown, dae::ControllerButton::Start, 27 };
 		input.AddAction(std::move(exitAction));
 
-		InputAction toggleWindowAction{ std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::ButtonA, 65 };
+		InputAction toggleWindowAction{ std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::Back, 65 };
 		input.AddAction(std::move(toggleWindowAction));
 
 

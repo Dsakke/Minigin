@@ -15,6 +15,14 @@ void QBertComponent::Die()
 	}
 }
 
+void QBertComponent::GainScore()
+{
+	if (auto pOwner = m_pOwner.lock())
+	{
+		Notify(pOwner, Events::ColorChange);
+	}
+}
+
 void QBertComponent::Update()
 {
 }

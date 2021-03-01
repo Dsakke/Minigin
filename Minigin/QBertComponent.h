@@ -9,6 +9,7 @@ public:
 	QBertComponent();
 
 	void Die();
+	void GainScore();
 	void Update() override;
 	void Draw() override;
 

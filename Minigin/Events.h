@@ -1,5 +1,9 @@
 #pragma once
 enum class Events
 {
-	QBertDied
+	QBertDied,
+	CoilyDefeatedFlyingDisc,
+	ColorChange,
+	DiscRemained,
+	SamOrSlickCaught
 };
