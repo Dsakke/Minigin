@@ -8,6 +8,8 @@ dae::InputManager::InputManager()
 	: m_KeyDownActions{}
 	, m_KeyUpActions{}
 	, m_KeyPressedActions{}
+	, m_ControllerState{}
+	, m_PrevControllerState{}
 {
 
 }
