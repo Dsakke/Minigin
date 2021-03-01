@@ -16,6 +16,9 @@
 #include "SpriteRenderComponent.h"
 #include "ExitCommand.h"
 #include "ToggleDebugWindowCommand.h"
+#include "QBertComponent.h"
+#include "LifeTrackerComponent.h"
+#include "DiedCommand.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -52,32 +55,54 @@ void dae::Minigin::LoadGame() const
 
 	auto go = std::make_shared<GameObject>();
 	
-	auto pSpriteRenderer{ new SpriteRenderComponent{ResourceManager::GetInstance().LoadTexture("background.jpg")} };
+	auto pSpriteRenderer{ std::make_shared<SpriteRenderComponent>(ResourceManager::GetInstance().LoadTexture("background.jpg")) };
 	go->AddComponent(pSpriteRenderer);
-	auto pBGTransform{ new TransformComponent{} };
+	auto pBGTransform{ std::make_shared<TransformComponent>() };
 	pBGTransform->SetPosition(0, 0, 0);
 	go->AddComponent(pBGTransform);
 	scene.Add(go);
 
 
 	go = std::make_shared<GameObject>();
-	pSpriteRenderer = new SpriteRenderComponent{ ResourceManager::GetInstance().LoadTexture("logo.png") };
+	pSpriteRenderer = std::make_shared<SpriteRenderComponent>( ResourceManager::GetInstance().LoadTexture("logo.png") );
 	go->AddComponent(pSpriteRenderer);
-	auto pLogoTransform{ new TransformComponent{} };
+	auto pLogoTransform{ std::make_shared<TransformComponent>() };
 	pLogoTransform->SetPosition(210, 180, 0);
 	go->AddComponent(pLogoTransform);
 	scene.Add(go);
 
 	auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
 	auto pTextObject = std::make_shared<GameObject>();
-	auto pTextComponentTransform{ new TransformComponent{} };
-	pTextComponentTransform->SetPosition(80, 20, 0);
+	auto pTextComponentTransform{ std::make_shared<TransformComponent>(TransformComponent{80, 20, 0}) };
 	pTextObject->AddComponent(pTextComponentTransform);
-	auto pTextComponent{ new TextComponent{" ", font} };
+	auto pTextComponent{ std::make_shared<TextComponent>(font) };
 	pTextObject->AddComponent(pTextComponent);
-	auto pFpsComponent{ new FPSComponent{} };
+	auto pFpsComponent{ std::make_shared<FPSComponent>() };
 	pTextObject->AddComponent(pFpsComponent);
 	scene.Add(pTextObject);
+
+	auto pLiveDisplay = std::make_shared<GameObject>();
+	auto pLiveComponent = std::make_shared<LifeTrackerComponent>();
+	pLiveDisplay->AddComponent(pLiveComponent);
+	auto pLiveTextComponent = std::make_shared<TextComponent>( font );
+	pLiveDisplay->AddComponent(pLiveTextComponent);
+	auto pLiveTransformComponent{ std::make_shared<TransformComponent>(TransformComponent{300, 20, 0}) };
+	pLiveDisplay->AddComponent(pLiveTransformComponent);
+	scene.Add(pLiveDisplay);
+
+	auto pQbertObject = std::make_shared<GameObject>();
+	auto pQBertComponent{ std::make_shared<QBertComponent>() };
+	pQBertComponent->AddObserver(pLiveComponent);
+	pQbertObject->AddComponent(pQBertComponent);
+	scene.Add(pQbertObject);
+
+
+	// Add inputs
+	auto& input = InputManager::GetInstance();
+	InputAction dieAction{ std::make_shared<DiedCommand>(pQBertComponent), dae::InputType::keyDown, dae::ControllerButton::ButtonB, -1 };
+	input.AddAction(std::move(dieAction));
+
+
 	
 }
 
@@ -103,13 +128,13 @@ void dae::Minigin::Run()
 		auto& renderer = Renderer::GetInstance();
 		auto& sceneManager = SceneManager::GetInstance();
 		auto& input = InputManager::GetInstance();
-
+		
 		bool doContinue = true;
 
-		dae::InputAction exitAction{ std::make_shared<ExitCommand>(doContinue), dae::InputType::keyDown, dae::ControllerButton::Start, 27  };
+		dae::InputAction exitAction{ std::make_shared<ExitCommand>(doContinue), dae::InputType::keyDown, dae::ControllerButton::Start, 27 };
 		input.AddAction(std::move(exitAction));
 
-		InputAction toggleWindowAction{std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::ButtonA, 65};
+		InputAction toggleWindowAction{ std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::ButtonA, 65 };
 		input.AddAction(std::move(toggleWindowAction));
 
 

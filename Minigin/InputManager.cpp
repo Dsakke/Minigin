@@ -4,6 +4,13 @@
 #include <iostream>
 #include <SDL.h>
 
+dae::InputManager::InputManager()
+	: m_KeyDownActions{}
+	, m_KeyUpActions{}
+	, m_KeyPressedActions{}
+{
+
+}
 
 dae::InputManager::~InputManager()
 {
@@ -11,7 +18,6 @@ dae::InputManager::~InputManager()
 
 void dae::InputManager::ProcessInput()
 {
-	// todo: read the input
 	m_PrevControllerState = m_ControllerState;
 	ZeroMemory(&m_ControllerState, sizeof(XINPUT_STATE));
 	XInputGetState((DWORD)0, &m_ControllerState);
@@ -85,7 +91,6 @@ dae::InputAction::InputAction(std::shared_ptr<Command> pCommand, InputType input
 	, m_ControllerButton{controllerButton}
 	, m_KeyboardCode{ keyBoardCode }
 {
-
 }
 
 

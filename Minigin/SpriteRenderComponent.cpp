@@ -24,11 +24,14 @@ void dae::SpriteRenderComponent::Update()
 
 void dae::SpriteRenderComponent::Draw()
 {
-	const auto pTransComponent = m_pOwner->GetComponent<TransformComponent>();
-	if (!pTransComponent)
+	if (auto pOwner = m_pOwner.lock())
 	{
-		throw std::runtime_error(std::string("SpriteRenderComponent was attached to GameObject without a TransformComponent"));
+		const auto pTransComponent = pOwner->GetComponent<TransformComponent>();
+		if (!pTransComponent)
+		{
+			throw std::runtime_error(std::string("SpriteRenderComponent was attached to GameObject without a TransformComponent"));
+		}
+		const auto pos = pTransComponent->GetTransform().GetPosition();
+		Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
 	}
-	const auto pos = pTransComponent->GetTransform().GetPosition();
-	Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
 }

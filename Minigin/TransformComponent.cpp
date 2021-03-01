@@ -10,6 +10,13 @@ namespace dae
 		m_Transform.SetPosition(0, 0, 0);
 	}
 
+	TransformComponent::TransformComponent(float x, float y, float z)
+		: Component{}
+		, m_Transform{}
+	{
+		m_Transform.SetPosition(x, y, z);
+	}
+
 	void TransformComponent::Update()
 	{
 	}

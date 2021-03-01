@@ -22,6 +22,9 @@
     <Filter Include="imgui">
       <UniqueIdentifier>{3dd0bfde-4e98-4fa3-bf41-69b812d6cc78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Observers/Subjects">
+      <UniqueIdentifier>{ae672d0a-263a-45b4-aabd-ca64b40cc307}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MiniginPCH.h">
@@ -114,6 +117,24 @@
     <ClInclude Include="ToggleDebugWindowCommand.h">
       <Filter>Commands</Filter>
     </ClInclude>
+    <ClInclude Include="QBertComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Observers/Subjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Subject.h">
+      <Filter>Observers/Subjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Events.h">
+      <Filter>Observers/Subjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeTrackerComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="DiedCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -195,6 +216,18 @@
       <Filter>Commands</Filter>
     </ClCompile>
     <ClCompile Include="ToggleDebugWindowCommand.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Subject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QBertComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="LifeTrackerComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="DiedCommand.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
   </ItemGroup>

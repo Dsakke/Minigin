@@ -9,7 +9,7 @@ namespace dae
 	{
 	public:
 		TransformComponent();
-
+		TransformComponent(float x, float y, float z);
 
 		void Update() override;
 		void Draw() override;

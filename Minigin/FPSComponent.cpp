@@ -5,7 +5,11 @@
 #include "TextComponent.h"
 void dae::FPSComponent::Update()
 {
-	m_pOwner->GetComponent<TextComponent>()->SetText(std::to_string(1 / Time::GetInstance()->GetElapsed()));
+	if (auto pOwner = m_pOwner.lock())
+	{
+		auto pTextComponent = pOwner->GetComponent<TextComponent>();
+		pOwner->GetComponent<TextComponent>()->SetText(std::to_string(1 / Time::GetInstance()->GetElapsed()));
+	}
 }
 
 void dae::FPSComponent::Draw()

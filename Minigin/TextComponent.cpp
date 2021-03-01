@@ -14,7 +14,7 @@ namespace dae
 
 	TextComponent::TextComponent(std::shared_ptr<Font> font)
 		: m_NeedsUpdate{true}
-		, m_Text{}
+		, m_Text{" "}
 		, m_pFont{font}
 	{
 	}
@@ -58,13 +58,16 @@ namespace dae
 	{
 		if (m_pTexture != nullptr)
 		{
-			const TransformComponent* pTransCom = m_pOwner->GetComponent<TransformComponent>();
-			if (!pTransCom)
+			if (auto pOwner = m_pOwner.lock())
 			{
-				throw std::runtime_error(std::string("TextComponent is attached to GameObject without TransformComponent"));
+				const auto pTransCom = pOwner->GetComponent<TransformComponent>();
+				if (!pTransCom)
+				{
+					throw std::runtime_error(std::string("TextComponent is attached to GameObject without TransformComponent"));
+				}
+				const auto pos = pTransCom->GetTransform().GetPosition();
+				Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
 			}
-			const auto pos = pTransCom->GetTransform().GetPosition();
-			Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
 		}
 	}
 

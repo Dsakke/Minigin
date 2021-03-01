@@ -5,15 +5,11 @@
 
 dae::GameObject::~GameObject()
 {
-	for (Component* pComp : m_Components)
-	{
-		delete pComp;
-	}
 }
 
 void dae::GameObject::Update()
 {
-	for (Component* comp : m_Components)
+	for (std::shared_ptr<Component> comp : m_Components)
 	{
 		comp->Update();
 	}
@@ -21,7 +17,7 @@ void dae::GameObject::Update()
 
 void dae::GameObject::Render() const
 {
-	for (Component* comp : m_Components)
+	for (std::shared_ptr<Component> comp : m_Components)
 	{
 		comp->Draw();
 	}
@@ -29,8 +25,8 @@ void dae::GameObject::Render() const
 
 
 
-void dae::GameObject::AddComponent(Component* pComponent)
+void dae::GameObject::AddComponent(std::shared_ptr<Component> pComponent)
 {
-	pComponent->SetOwner(this);
+	pComponent->SetOwner(std::weak_ptr<GameObject>(shared_from_this()));
 	m_Components.push_back(pComponent);
 }

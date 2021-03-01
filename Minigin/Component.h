@@ -11,9 +11,9 @@ namespace dae
 		virtual void Update() = 0;
 		virtual void Draw() = 0;
 
-		void SetOwner(GameObject* pOwner);
+		void SetOwner(std::weak_ptr<GameObject> pOwner);
 	protected:
-		GameObject* m_pOwner;
+		std::weak_ptr<GameObject> m_pOwner;
 
 };
 }

@@ -32,7 +32,7 @@ namespace dae
 	{
 		keyDown,
 		keyUp,
-		KeyPressed
+		KeyPressed,
 	};
 
 	// TODO: InputAction doesnt RAII
@@ -74,7 +74,7 @@ namespace dae
 		XINPUT_STATE m_ControllerState;
 		XINPUT_STATE m_PrevControllerState;
 
-		InputManager() = default;
+		InputManager();
 
 		friend class Singleton<InputManager>;
 
