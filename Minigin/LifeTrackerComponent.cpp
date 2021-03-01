@@ -26,7 +26,14 @@ void LifeTrackerComponent::OnNotify(const std::shared_ptr<dae::GameObject> pGame
 		if (auto pOwner = m_pOwner.lock())
 		{
 			auto pTextComponent{ pOwner->GetComponent<dae::TextComponent>() };
-			pTextComponent->SetText("Remaining lives: " + std::to_string(nrLives));
+			if (pTextComponent)
+			{
+				pTextComponent->SetText("Remaining lives: " + std::to_string(nrLives));
+			}
+			else
+			{
+				throw std::runtime_error("LifeTrackerComponent was notified while not attached to a Gameobject without a textComponent");
+			}
 
 		}
 
