@@ -200,9 +200,6 @@
     <ClCompile Include="..\3rdParty\imgui-1.81\imgui.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="..\3rdParty\imgui-1.81\imgui_demo.cpp">
-      <Filter>imgui</Filter>
-    </ClCompile>
     <ClCompile Include="..\3rdParty\imgui-1.81\imgui_draw.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
@@ -240,7 +237,7 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="GainScoreCommand.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Commands</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

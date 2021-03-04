@@ -8,11 +8,11 @@
 namespace dae
 {
 	class Texture2D;
-	class GameObject final : public SceneObject, public std::enable_shared_from_this<GameObject>
+	class GameObject final : public std::enable_shared_from_this<GameObject>
 	{
 	public:
-		void Update() override;
-		void Render() const override;
+		void Update();
+		void Render() const;
 
 		template <class T>
 		std::shared_ptr<T> GetComponent();
