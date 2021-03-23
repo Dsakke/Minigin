@@ -3,6 +3,7 @@
 
 #include "Component.h"
 #include "Transform.h"
+
 namespace dae
 {
 	class TransformComponent final : public Component

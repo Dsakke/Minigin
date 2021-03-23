@@ -1,6 +1,5 @@
 #pragma once
 #include "Transform.h"
-#include "SceneObject.h"
 #include <vector>
 #include "Component.h"
 #include <memory>

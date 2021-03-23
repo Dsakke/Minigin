@@ -1,6 +1,5 @@
 #pragma once
 #include "Component.h"
-#include "Transform.h"
 #include <string>
 #include <SDL.h>
 #include <SDL_ttf.h>

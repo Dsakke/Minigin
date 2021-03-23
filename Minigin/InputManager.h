@@ -12,6 +12,7 @@ namespace dae
 	// Values are taken from https://docs.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_gamepad
 	enum class ControllerButton : WORD
 	{
+		NoControllerButton = 0,
 		ButtonA = XINPUT_GAMEPAD_A,
 		ButtonB = XINPUT_GAMEPAD_B,
 		ButtonX = XINPUT_GAMEPAD_X,
@@ -35,7 +36,6 @@ namespace dae
 		KeyPressed,
 	};
 
-	// TODO: InputAction doesnt RAII
 	class InputAction
 	{
 	public:

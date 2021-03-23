@@ -9,6 +9,8 @@
 #include "GameObject.h"
 #include "TransformComponent.h"
 
+#include "Transform.h"
+
 namespace dae
 {
 

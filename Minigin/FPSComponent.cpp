@@ -1,6 +1,6 @@
 #include "MiniginPCH.h"
 #include "FPSComponent.h"
-#include "Time.h"
+#include "TimeManager.h"
 #include "GameObject.h"
 #include "TextComponent.h"
 void dae::FPSComponent::Update()

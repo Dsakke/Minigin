@@ -1,5 +1,5 @@
 #include "MiniginPCH.h"
-#include "Time.h"
+#include "TimeManager.h"
 
 dae::Time* dae::Time::m_pInstance{ nullptr };
 

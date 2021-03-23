@@ -57,16 +57,13 @@
     <ClInclude Include="SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SceneObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Minigin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
+    <ClInclude Include="TimeManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
@@ -141,6 +138,9 @@
     <ClInclude Include="GainScoreCommand.h">
       <Filter>Commands</Filter>
     </ClInclude>
+    <ClInclude Include="MiniginLibType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -194,9 +194,6 @@
     <ClCompile Include="Component.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteRenderComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\3rdParty\imgui-1.81\imgui.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
@@ -238,6 +235,9 @@
     </ClCompile>
     <ClCompile Include="GainScoreCommand.cpp">
       <Filter>Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

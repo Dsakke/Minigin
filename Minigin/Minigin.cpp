@@ -12,7 +12,7 @@
 #include "TransformComponent.h"
 #include "TextComponent.h"
 #include "FPSComponent.h"
-#include "Time.h"
+#include "TimeManager.h"
 #include "SpriteRenderComponent.h"
 #include "ExitCommand.h"
 #include "ToggleDebugWindowCommand.h"
