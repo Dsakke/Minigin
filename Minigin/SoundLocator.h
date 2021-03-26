@@ -13,6 +13,5 @@ namespace dae
 		static void ProvideSoundSystem(std::shared_ptr<BaseSoundSystem> pSoundSystem);
 	private:
 		static std::shared_ptr<BaseSoundSystem> m_pSoundSystem;
-
 	};
 }

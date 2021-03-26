@@ -1,5 +1,6 @@
 #include "MiniginPCH.h"
 #include "SoundLocator.h"
+#include "NullSoundSystem.h"
 
 namespace dae
 {
@@ -7,7 +8,11 @@ namespace dae
 
     std::shared_ptr<BaseSoundSystem> SoundLocator::GetSoundSystem()
     {
-        return m_pSoundSystem;
+        if (m_pSoundSystem)
+        {
+            return m_pSoundSystem;
+        }
+        return std::make_shared<NullSoundSystem>();
     }
 
     void SoundLocator::ProvideSoundSystem(std::shared_ptr<BaseSoundSystem> pSoundSystem)
