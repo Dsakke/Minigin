@@ -25,6 +25,12 @@
     <Filter Include="Observers/Subjects">
       <UniqueIdentifier>{ae672d0a-263a-45b4-aabd-ca64b40cc307}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{1b68eb23-fb28-42ed-b063-bf41057b0d91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound\SoundSystems">
+      <UniqueIdentifier>{d9e3e059-0b7f-43e7-9392-e4335f1b7530}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MiniginPCH.h">
@@ -141,6 +147,24 @@
     <ClInclude Include="MiniginLibType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SoundLocator.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSoundSystem.h">
+      <Filter>Sound\SoundSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="NullSoundSystem.h">
+      <Filter>Sound\SoundSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSystem.h">
+      <Filter>Sound\SoundSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSystemLogger.h">
+      <Filter>Sound\SoundSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundTestCommand.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -238,6 +262,21 @@
     </ClCompile>
     <ClCompile Include="SpriteRenderComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundLocator.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="NullSoundSystem.cpp">
+      <Filter>Sound\SoundSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSystem.cpp">
+      <Filter>Sound\SoundSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundSystemLogger.cpp">
+      <Filter>Sound\SoundSystems</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundTestCommand.cpp">
+      <Filter>Commands</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

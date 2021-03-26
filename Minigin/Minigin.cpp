@@ -21,6 +21,10 @@
 #include "DiedCommand.h"
 #include "ScoreComponent.h"
 #include "GainScoreCommand.h"
+#include "SoundLocator.h"
+#include "SoundSystem.h"
+#include "SoundSystemLogger.h"
+#include "SoundTestCommand.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -57,6 +61,8 @@ void dae::Minigin::LoadGame() const
 
 	auto go = std::make_shared<GameObject>();
 	
+	SoundLocator::ProvideSoundSystem(std::make_shared<SoundSystemLogger>(std::make_shared<SoundSystem>()));
+
 	auto pSpriteRenderer{ std::make_shared<SpriteRenderComponent>(ResourceManager::GetInstance().LoadTexture("background.jpg")) };
 	go->AddComponent(pSpriteRenderer);
 	auto pBGTransform{ std::make_shared<TransformComponent>() };
@@ -145,8 +151,9 @@ void dae::Minigin::LoadGame() const
 	InputAction dieAction2{ std::make_shared<DiedCommand>(pQBertComponent2), dae::InputType::keyDown, dae::ControllerButton::ButtonX, -1 };
 	input.AddAction(std::move(dieAction2));
 
-	InputAction gainScoreAction2{ std::make_shared<GainScoreCommand>(pQBertComponent2), dae::InputType::keyDown, dae::ControllerButton::ButtonY, -1 };
-	input.AddAction(std::move(gainScoreAction2));
+
+	InputAction soundTestAction{ std::make_shared<SoundTestCommand>(), dae::InputType::keyDown, dae::ControllerButton::ButtonY, -1 };
+	input.AddAction(std::move(soundTestAction));
 }
 
 void dae::Minigin::Cleanup()
