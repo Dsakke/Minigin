@@ -3,7 +3,7 @@
 
 namespace dae
 {
-	void NullSoundSystem::AddSound(const std::string&)
+	void NullSoundSystem::PlaySound(const std::string&)
 	{
 
 	}

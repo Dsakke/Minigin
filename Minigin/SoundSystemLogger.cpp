@@ -11,7 +11,7 @@ dae::SoundSystemLogger::~SoundSystemLogger()
 {
 }
 
-void dae::SoundSystemLogger::AddSound(const std::string& fileName)
+void dae::SoundSystemLogger::PlaySound(const std::string& fileName)
 {
 	m_pSoundSystem->AddSound(fileName);
 	std::cout << fileName << " Sound played\n";

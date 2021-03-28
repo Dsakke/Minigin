@@ -5,6 +5,6 @@ namespace dae
 	class NullSoundSystem final : public BaseSoundSystem
 	{
 	public:
-		void AddSound(const std::string& fileName) override;
+		void PlaySound(const std::string& fileName) override;
 	};
 }

@@ -8,7 +8,7 @@ namespace dae
 	public:
 		SoundSystemLogger(std::shared_ptr<BaseSoundSystem> pSoundSystem);
 		~SoundSystemLogger();
-		void AddSound(const std::string& fileName) override;
+		void PlaySound(const std::string& fileName) override;
 	private:
 		std::shared_ptr<BaseSoundSystem> m_pSoundSystem;
 

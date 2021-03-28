@@ -8,6 +8,6 @@ namespace dae
 	{
 	public:
 		virtual ~BaseSoundSystem() = default;
-		virtual void AddSound(const std::string& fileName) = 0; // Add Sound to the queue
+		virtual void PlaySound(const std::string& fileName) = 0; // Add Sound to the queue
 	};
 }

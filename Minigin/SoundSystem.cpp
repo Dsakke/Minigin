@@ -38,7 +38,7 @@ dae::SoundSystem::~SoundSystem()
 	}
 }
 
-void dae::SoundSystem::AddSound(const std::string& fileName)
+void dae::SoundSystem::PlaySound(const std::string& fileName)
 {
 	m_SoundQueue.push(fileName);
 }

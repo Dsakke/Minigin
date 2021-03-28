@@ -16,7 +16,7 @@ namespace dae
 	public:
 		SoundSystem();
 		~SoundSystem();
-		void AddSound(const std::string& fileName) override;
+		void PlaySound(const std::string& fileName) override;
 		
 	private:
 		void Loop();
