@@ -6,5 +6,5 @@
 void SoundTestCommand::Execute()
 {
 	std::shared_ptr<dae::BaseSoundSystem> pSoundSystem{ dae::SoundLocator::GetSoundSystem() };
-	pSoundSystem->AddSound("../Data/Sounds/Test.wav");
+	pSoundSystem->PlaySound("../Data/Sounds/Test.wav");
 }
