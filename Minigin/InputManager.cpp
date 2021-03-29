@@ -18,7 +18,7 @@ dae::InputManager::~InputManager()
 {
 }
 
-void dae::InputManager::ProcessInput()
+bool dae::InputManager::ProcessInput()
 {
 	m_PrevControllerState = m_ControllerState;
 	ZeroMemory(&m_ControllerState, sizeof(XINPUT_STATE));
@@ -49,7 +49,7 @@ void dae::InputManager::ProcessInput()
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT) {
-			m_KeyDownActions[0].GetCommand()->Execute(); // dirty temp fix, do change
+			return false;
 		}
 		if (e.type == SDL_KEYDOWN) {
 
@@ -58,6 +58,7 @@ void dae::InputManager::ProcessInput()
 
 		}
 	}
+	return true;
 }
 
 bool dae::InputManager::IsPressed(ControllerButton button) const

@@ -60,7 +60,7 @@ namespace dae
 	public:
 		~InputManager();
 
-		void ProcessInput();
+		bool ProcessInput();
 		bool IsPressed(ControllerButton button) const;
 
 		void AddAction(InputAction&& action); 

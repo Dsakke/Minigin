@@ -181,8 +181,7 @@ void dae::Minigin::Run()
 		
 		bool doContinue = true;
 
-		dae::InputAction exitAction{ std::make_shared<ExitCommand>(doContinue), dae::InputType::keyDown, dae::ControllerButton::Start, 27 };
-		input.AddAction(std::move(exitAction));
+
 
 		InputAction toggleWindowAction{ std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::Back, 65 };
 		input.AddAction(std::move(toggleWindowAction));
@@ -193,7 +192,7 @@ void dae::Minigin::Run()
 			Time::GetInstance()->UpdateTime();
 			const auto currentTime = high_resolution_clock::now();
 			
-			input.ProcessInput();
+			doContinue = input.ProcessInput();
 			sceneManager.Update();
 			renderer.Render();
 			

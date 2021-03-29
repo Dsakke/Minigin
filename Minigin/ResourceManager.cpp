@@ -32,6 +32,11 @@ void dae::ResourceManager::Init(const std::string& dataPath)
 
 std::shared_ptr<dae::Texture2D> dae::ResourceManager::LoadTexture(const std::string& file) const
 {
+	auto it{ m_Textures.find(file) };
+	if (it != m_Textures.end())
+	{
+		return it->second;
+	}
 	const auto fullPath = m_DataPath + file;
 	auto texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
 	if (texture == nullptr) 
@@ -43,5 +48,10 @@ std::shared_ptr<dae::Texture2D> dae::ResourceManager::LoadTexture(const std::str
 
 std::shared_ptr<dae::Font> dae::ResourceManager::LoadFont(const std::string& file, unsigned int size) const
 {
+	auto it{ m_Fonts.find(file) };
+	if (it != m_Fonts.end())
+	{
+		return it->second;
+	}
 	return std::make_shared<Font>(m_DataPath + file, size);
 }
