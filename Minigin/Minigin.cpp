@@ -50,6 +50,8 @@ void dae::Minigin::Initialize()
 	}
 
 	Renderer::GetInstance().Init(m_Window);
+	// tell the resource manager where he can find the game data
+	ResourceManager::GetInstance().Init("../Data/");
 }
 
 /**
@@ -71,11 +73,6 @@ void dae::Minigin::Cleanup()
 
 void dae::Minigin::Run()
 {
-	Initialize();
-
-	// tell the resource manager where he can find the game data
-	ResourceManager::GetInstance().Init("../Data/");
-
 	LoadGame();
 
 	{
