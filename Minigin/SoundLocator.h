@@ -2,6 +2,7 @@
 
 namespace dae
 {
+	class NullSoundSystem;
 	class BaseSoundSystem;
 	class SoundLocator final
 	{
@@ -13,5 +14,6 @@ namespace dae
 		static void ProvideSoundSystem(std::shared_ptr<BaseSoundSystem> pSoundSystem);
 	private:
 		static std::shared_ptr<BaseSoundSystem> m_pSoundSystem;
+		static std::shared_ptr<NullSoundSystem> m_pNullSoundSystem;
 	};
 }

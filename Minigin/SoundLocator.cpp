@@ -5,6 +5,7 @@
 namespace dae
 {
     std::shared_ptr<BaseSoundSystem> SoundLocator::m_pSoundSystem{};
+    std::shared_ptr<NullSoundSystem> SoundLocator::m_pNullSoundSystem{std::make_shared<NullSoundSystem>()};
 
     std::shared_ptr<BaseSoundSystem> SoundLocator::GetSoundSystem()
     {
@@ -12,7 +13,7 @@ namespace dae
         {
             return m_pSoundSystem;
         }
-        return std::make_shared<NullSoundSystem>();
+        return m_pNullSoundSystem;
     }
 
     void SoundLocator::ProvideSoundSystem(std::shared_ptr<BaseSoundSystem> pSoundSystem)
