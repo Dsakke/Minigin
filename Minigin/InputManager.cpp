@@ -47,15 +47,51 @@ bool dae::InputManager::ProcessInput()
 	}
 
 	SDL_Event e;
-	while (SDL_PollEvent(&e)) {
-		if (e.type == SDL_QUIT) {
+	while (SDL_PollEvent(&e)) 
+	{
+		if (e.type == SDL_QUIT) // this is a specific case because we alsways want to be able to close the game
+		{ 
 			return false;
 		}
-		if (e.type == SDL_KEYDOWN) {
-
+		else if (e.type == SDL_KEYDOWN) 
+		{
+			for (InputAction& action : m_KeyDownActions)
+			{
+				if (e.key.keysym.scancode == action.GetKeyboardCode())
+				{
+					action.GetCommand()->Execute();
+				}
+			}
 		}
-		if (e.type == SDL_MOUSEBUTTONDOWN) {
-
+		else if (e.type == SDL_MOUSEBUTTONDOWN) 
+		{
+			for (InputAction& action : m_KeyDownActions)
+			{
+				if (e.key.keysym.scancode == action.GetKeyboardCode())
+				{
+					action.GetCommand()->Execute();
+				}
+			}
+		}
+		else if (e.type == SDL_KEYUP)
+		{
+			for (InputAction& action : m_KeyUpActions)
+			{
+				if (e.key.keysym.scancode == action.GetKeyboardCode())
+				{
+					action.GetCommand()->Execute();
+				}
+			}
+		}
+		else if (e.type == SDL_MOUSEBUTTONUP)
+		{
+			for (InputAction& action : m_KeyUpActions)
+			{
+				if (e.key.keysym.scancode == action.GetKeyboardCode())
+				{
+					action.GetCommand()->Execute();
+				}
+			}
 		}
 	}
 	return true;
@@ -88,7 +124,7 @@ void dae::InputManager::AddAction(InputAction&& action)
 	}
 }
 
-dae::InputAction::InputAction(std::shared_ptr<Command> pCommand, InputType inputType, ControllerButton controllerButton, int keyBoardCode)
+dae::InputAction::InputAction(std::shared_ptr<Command> pCommand, InputType inputType, ControllerButton controllerButton, SDL_Scancode keyBoardCode)
 	: m_pCommand{pCommand}
 	, m_InputType{inputType}
 	, m_ControllerButton{controllerButton}
@@ -113,7 +149,7 @@ inline dae::ControllerButton dae::InputAction::GetControllerButton() const
 	return m_ControllerButton;
 }
 
-inline int dae::InputAction::GetKeyboardCode() const
+inline SDL_Scancode dae::InputAction::GetKeyboardCode() const
 {
 	return m_KeyboardCode;
 }

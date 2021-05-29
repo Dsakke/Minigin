@@ -3,7 +3,7 @@
 #pragma comment(lib, "XInput.lib")
 #include <vector>
 #include "Singleton.h"
-
+#include <SDL.h>
 
 class Command;
 namespace dae
@@ -39,19 +39,19 @@ namespace dae
 	class InputAction
 	{
 	public:
-		InputAction(std::shared_ptr<Command> pCommand, InputType inputType, ControllerButton controllerButton, int keyBoardCode );
+		InputAction(std::shared_ptr<Command> pCommand, InputType inputType, ControllerButton controllerButton, SDL_Scancode keyBoardCode );
 
 
 		inline std::shared_ptr<Command> GetCommand();
 		inline InputType GetType() const;
 		inline ControllerButton GetControllerButton() const;
-		inline int GetKeyboardCode() const;
+		inline SDL_Scancode GetKeyboardCode() const;
 
 	private:
 		std::shared_ptr<Command> m_pCommand;
 		InputType m_InputType;
 		ControllerButton m_ControllerButton;
-		int m_KeyboardCode;
+		SDL_Scancode m_KeyboardCode;
 	};
 
 
