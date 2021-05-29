@@ -14,6 +14,8 @@ namespace dae
 
 		void Update() override;
 		void Draw() override;
+
+		void SetTexture(std::shared_ptr<Texture2D> pTexture);
 	private:
 		std::shared_ptr<Texture2D> m_pTexture;
 	};
