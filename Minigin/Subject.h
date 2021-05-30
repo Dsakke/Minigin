@@ -10,12 +10,12 @@ namespace dae
 	class Subject
 	{
 	public:
-		void AddObserver(std::shared_ptr<Observer> pObserver);
-		void RemoveObserver(std::shared_ptr<Observer> pObserver);
+		void AddObserver(std::weak_ptr<Observer> pObserver);
+		void RemoveObserver(std::weak_ptr<Observer> pObserver);
 
 	protected:
 		void Notify(const std::shared_ptr<GameObject> pGameObject, Events event);
 	private:
-		std::vector<std::shared_ptr<Observer>> m_pObservers;
+		std::vector<std::weak_ptr<Observer>> m_pObservers;
 	};
 }
