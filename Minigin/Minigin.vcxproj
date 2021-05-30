@@ -231,12 +231,10 @@
     <ClInclude Include="..\3rdParty\imgui-1.81\imstb_truetype.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Component.h" />
-    <ClInclude Include="DiedCommand.h" />
     <ClInclude Include="Events.h" />
     <ClInclude Include="ExitCommand.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FPSComponent.h" />
-    <ClInclude Include="GainScoreCommand.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LifeTrackerComponent.h" />
@@ -245,7 +243,6 @@
     <ClInclude Include="MiniginPCH.h" />
     <ClInclude Include="NullSoundSystem.h" />
     <ClInclude Include="Observer.h" />
-    <ClInclude Include="QBertComponent.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
@@ -304,11 +301,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="DiedCommand.cpp" />
     <ClCompile Include="ExitCommand.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FPSComponent.cpp" />
-    <ClCompile Include="GainScoreCommand.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LifeTrackerComponent.cpp" />
@@ -322,7 +317,6 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MiniginPCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="NullSoundSystem.cpp" />
-    <ClCompile Include="QBertComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />

@@ -120,9 +120,6 @@
     <ClInclude Include="ToggleDebugWindowCommand.h">
       <Filter>Commands</Filter>
     </ClInclude>
-    <ClInclude Include="QBertComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Observer.h">
       <Filter>Observers/Subjects</Filter>
     </ClInclude>
@@ -135,14 +132,8 @@
     <ClInclude Include="LifeTrackerComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="DiedCommand.h">
-      <Filter>Commands</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreComponent.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="GainScoreCommand.h">
-      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="MiniginLibType.h">
       <Filter>Header Files</Filter>
@@ -245,20 +236,11 @@
     <ClCompile Include="Subject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QBertComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="LifeTrackerComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="DiedCommand.cpp">
-      <Filter>Commands</Filter>
-    </ClCompile>
     <ClCompile Include="ScoreComponent.cpp">
       <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="GainScoreCommand.cpp">
-      <Filter>Commands</Filter>
     </ClCompile>
     <ClCompile Include="SpriteRenderComponent.cpp">
       <Filter>Components</Filter>

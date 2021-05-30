@@ -45,6 +45,6 @@ void LoadGame()
 	dae::Scene& scene = dae::SceneManager::GetInstance().CreateScene("SandBox");
 
 	dae::Transform transform{};
-	transform.SetPosition(400, 100, 0);
+	transform.SetPosition(304, 100, 0);
 	LoadLevel("../data/level1.json", scene, transform);
 }

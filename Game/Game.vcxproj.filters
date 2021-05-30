@@ -48,5 +48,8 @@
     <ClInclude Include="LevelComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="QbertComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

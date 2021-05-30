@@ -192,6 +192,7 @@ xcopy "$(SolutionDir)3rdParty\FMOD\lib\x64\*.dll" "$(outputPath)" /R /Y</Command
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="LevelNodeComponent.h" />
     <ClInclude Include="PlayFieldComponent.h" />
+    <ClInclude Include="QbertComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
