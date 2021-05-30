@@ -10,6 +10,8 @@ namespace dae
 	class Subject
 	{
 	public:
+		virtual ~Subject() = default;
+
 		void AddObserver(std::weak_ptr<Observer> pObserver);
 		void RemoveObserver(std::weak_ptr<Observer> pObserver);
 
