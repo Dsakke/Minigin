@@ -84,7 +84,7 @@ void dae::Minigin::Run()
 
 
 
-		InputAction toggleWindowAction{ std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::Back, 65 };
+		InputAction toggleWindowAction{ std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::Back, SDL_SCANCODE_SPACE };
 		input.AddAction(std::move(toggleWindowAction));
 
 

@@ -23,6 +23,7 @@ namespace dae
 
 		bool m_Continue;
 		concurrency::concurrent_queue<std::string> m_SoundQueue;
+		// This unordered map is only used on 1 thread and thus doesnt need to be thread safe
 		std::unordered_map<std::string, FMOD::Sound*> m_Sounds; // Don't want to place these sounds in the resource manager because it's FMOD specific
 		std::thread m_Thread;
 		FMOD::System* m_pSystem;

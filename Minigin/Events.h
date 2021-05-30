@@ -5,5 +5,7 @@ enum class Events
 	CoilyDefeatedFlyingDisc,
 	ColorChange,
 	DiscRemained,
-	SamOrSlickCaught
+	SamOrSlickCaught,
+	LevelNodeActivated,
+	LevelNodeDeactivated
 };
