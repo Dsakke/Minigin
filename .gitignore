@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,c++
 
+# don't ignore anything in the 3rdParty folder
+!3rdParty/
+
 ### C++ ###
 # Prerequisites
 *.d
