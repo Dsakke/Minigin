@@ -95,6 +95,9 @@ void QBertComponent::Draw()
 
 void QBertComponent::FellOffGrid()
 {
+	m_GridX = 0;
+	m_GridY = 0;
+	MoveToNewPos();
 }
 
 void QBertComponent::MoveToNewPos()

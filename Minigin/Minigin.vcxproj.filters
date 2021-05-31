@@ -129,9 +129,6 @@
     <ClInclude Include="Events.h">
       <Filter>Observers/Subjects</Filter>
     </ClInclude>
-    <ClInclude Include="LifeTrackerComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -232,9 +229,6 @@
     </ClCompile>
     <ClCompile Include="Subject.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LifeTrackerComponent.cpp">
-      <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="ScoreComponent.cpp">
       <Filter>Components</Filter>
