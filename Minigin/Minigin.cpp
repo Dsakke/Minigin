@@ -21,7 +21,6 @@
 #include "SoundLocator.h"
 #include "SoundSystem.h"
 #include "SoundSystemLogger.h"
-#include "SoundTestCommand.h"
 
 using namespace std;
 using namespace std::chrono;
