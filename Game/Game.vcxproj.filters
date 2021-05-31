@@ -11,6 +11,12 @@
     <Filter Include="Misc">
       <UniqueIdentifier>{4dc73792-deb7-49af-81cd-c9d01276e45a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Commands">
+      <UniqueIdentifier>{f569ada1-1879-44de-bc84-2651f3d29488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Commands\MovementCommands">
+      <UniqueIdentifier>{6d0944c5-192c-4bb2-8ead-9bc54a1f40f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -31,6 +37,24 @@
     <ClCompile Include="LevelLoader.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
+    <ClCompile Include="QbertComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveDownCommand.cpp">
+      <Filter>Commands\MovementCommands</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveLeftCommand.cpp">
+      <Filter>Commands\MovementCommands</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveLeftCommand.h">
+      <Filter>Commands\MovementCommands</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveRightCommand.cpp">
+      <Filter>Commands\MovementCommands</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveUpCommand.cpp">
+      <Filter>Commands\MovementCommands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayFieldComponent.h">
@@ -50,6 +74,15 @@
     </ClInclude>
     <ClInclude Include="QbertComponent.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveDownCommand.h">
+      <Filter>Commands\MovementCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveRightCommand.h">
+      <Filter>Commands\MovementCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveUpCommand.h">
+      <Filter>Commands\MovementCommands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

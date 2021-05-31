@@ -92,7 +92,7 @@ std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, dae::Scene& s
             scene.Add(pObject);
         }
     }
-    std::shared_ptr<LevelComponent> pLevelComp = std::make_shared<LevelComponent>(std::move(level));
+    std::shared_ptr<LevelComponent> pLevelComp = std::make_shared<LevelComponent>(std::move(level), notActiveW);
     std::shared_ptr<dae::GameObject> pObject = std::make_shared<dae::GameObject>();
     pObject->AddComponent(pLevelComp);
     Level& l = pLevelComp->GetLevel();

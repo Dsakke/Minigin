@@ -253,7 +253,6 @@
     <ClInclude Include="BaseSoundSystem.h" />
     <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="SoundSystemLogger.h" />
-    <ClInclude Include="SoundTestCommand.h" />
     <ClInclude Include="SpriteRenderComponent.h" />
     <ClInclude Include="Subject.h" />
     <ClInclude Include="TextComponent.h" />
@@ -325,7 +324,6 @@
     <ClCompile Include="SoundLocator.cpp" />
     <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="SoundSystemLogger.cpp" />
-    <ClCompile Include="SoundTestCommand.cpp" />
     <ClCompile Include="SpriteRenderComponent.cpp" />
     <ClCompile Include="Subject.cpp" />
     <ClCompile Include="TextComponent.cpp" />

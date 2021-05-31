@@ -3,6 +3,7 @@
 #include "Observer.h"
 #include <vector>
 #include "Events.h"
+#include "glm.hpp"
 
 namespace dae
 {
@@ -18,17 +19,22 @@ public:
 	LevelComponent& operator=(LevelComponent&&) = delete;
 	LevelComponent& operator=(const LevelComponent&) = delete;
 
-	LevelComponent(Level&& level);
+	LevelComponent(Level&& level, int nodeSize);
 	void OnNotify(const std::shared_ptr<dae::GameObject> pGameObject, Events event) override;
 
 	void Draw() override;
 	void Update() override;
-
+	bool FallsOfLevel(int x, int y) const;
+	void StepOnTile(int x, int y);
+	glm::vec2 GetTilePos(int x, int y) const;
 	Level& GetLevel();
+	int GetNodeSize() const;
+
 private:
 	void LevelWon();
 
 	Level m_Level;
 	int m_TotalNodes;
 	int m_ActiveNodes;
+	int m_NodeSize;
 };

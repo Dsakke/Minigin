@@ -153,9 +153,6 @@
     <ClInclude Include="SoundSystemLogger.h">
       <Filter>Sound\SoundSystems</Filter>
     </ClInclude>
-    <ClInclude Include="SoundTestCommand.h">
-      <Filter>Commands</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -256,9 +253,6 @@
     </ClCompile>
     <ClCompile Include="SoundSystemLogger.cpp">
       <Filter>Sound\SoundSystems</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundTestCommand.cpp">
-      <Filter>Commands</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
