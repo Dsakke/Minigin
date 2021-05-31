@@ -118,9 +118,9 @@ void dae::InputManager::AddAction(InputAction&& action)
 	{
 		m_KeyUpActions.push_back(action);
 	}
-	else if (action.GetType() == InputType::keyUp)
+	else if (action.GetType() == InputType::KeyPressed)
 	{
-		m_KeyUpActions.push_back(action);
+		m_KeyPressedActions.push_back(action);
 	}
 }
 
