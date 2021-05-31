@@ -17,8 +17,10 @@ namespace dae
 		template <class T>
 		const std::shared_ptr<T> GetComponent() const; // We want both const and not const version of this function so we can call it from within a const function
 		void AddComponent(std::shared_ptr<Component> pComponent);
+		bool GetIsActive() const;
+		void SetActive(bool active);
 
-		GameObject() = default;
+		GameObject();
 		virtual ~GameObject();
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;
@@ -27,6 +29,7 @@ namespace dae
 
 	private:
 
+		bool m_Active;
 		std::vector<std::shared_ptr<Component>> m_Components;
 	};
 
