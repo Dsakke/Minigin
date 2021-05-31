@@ -24,6 +24,7 @@
 #include "MoveLeftCommand.h"
 #include "MoveRightCommand.h"
 #include "FPSComponent.h"
+#include "TextComponent.h"
 
 void LoadGame();
 
@@ -46,16 +47,24 @@ void LoadGame()
 	
 	dae::InputManager& inputManager = dae::InputManager::GetInstance();
 	dae::SoundLocator::ProvideSoundSystem(std::make_shared<dae::SoundSystem>());
+	dae::ResourceManager& resourceManager = dae::ResourceManager::GetInstance();
 
 	dae::Scene& scene = dae::SceneManager::GetInstance().CreateScene("SandBox");
 
+	std::shared_ptr<dae::Font> pFont = resourceManager.LoadFont("Lingua.otf", 16);
 
+	std::shared_ptr<dae::GameObject> pFPSObject = std::make_shared<dae::GameObject>();
+	std::shared_ptr<dae::TextComponent> pFPSText = std::make_shared<dae::TextComponent>(pFont);
 	std::shared_ptr<dae::FPSComponent> pFPS = std::make_shared<dae::FPSComponent>();
+	std::shared_ptr<dae::TransformComponent> pFPSTransform = std::make_shared<dae::TransformComponent>(20.f, 10.f, 0.f);
+	pFPSObject->AddComponent(pFPSTransform);
+	pFPSObject->AddComponent(pFPSText);
+	pFPSObject->AddComponent(pFPS);
+	scene.Add(pFPSObject);
 
 	dae::Transform transform{};
 	transform.SetPosition(304, 100, 0);
 	std::shared_ptr<LevelComponent> pLevel = LoadLevel("../data/level1.json", scene, transform);
-	dae::ResourceManager& resourceManager = dae::ResourceManager::GetInstance();
 	std::shared_ptr<dae::GameObject> pQbert = Factories::QBertFactory(pLevel, resourceManager.LoadTexture("qbert.png"));
 	scene.Add(pQbert);
 
