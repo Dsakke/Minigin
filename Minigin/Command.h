@@ -1,11 +1,14 @@
 #pragma once
 
-class GameObject;
-class Command
+namespace dae
 {
-public:
-	virtual ~Command() = default;
+	class GameObject;
+	class Command
+	{
+	public:
+		virtual ~Command() = default;
 
-	virtual void Execute() = 0;
-private:
-};
+		virtual void Execute() = 0;
+	private:
+	};
+}

@@ -5,9 +5,9 @@
 #include "Singleton.h"
 #include <SDL.h>
 
-class Command;
 namespace dae
 {
+	class Command;
 	// We Give the enum specific values so we can later bitwise and them with the GamePad
 	// Values are taken from https://docs.microsoft.com/en-us/windows/win32/api/xinput/ns-xinput-xinput_gamepad
 	enum class ControllerButton : WORD

@@ -134,7 +134,7 @@ dae::InputAction::InputAction(std::shared_ptr<Command> pCommand, InputType input
 
 
 
-inline std::shared_ptr<Command> dae::InputAction::GetCommand()
+inline std::shared_ptr<dae::Command> dae::InputAction::GetCommand()
 {
 	return m_pCommand;
 }

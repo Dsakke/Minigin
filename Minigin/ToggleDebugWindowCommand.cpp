@@ -2,7 +2,7 @@
 #include "ToggleDebugWindowCommand.h"
 #include "Renderer.h"
 
-void ToggleDebugCommand::Execute()
+void dae::ToggleDebugCommand::Execute()
 {
 	dae::Renderer::GetInstance().ToggleDemo();
 }

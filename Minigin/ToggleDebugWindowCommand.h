@@ -1,8 +1,10 @@
 #pragma once
 #include "Command.h"
-
-class ToggleDebugCommand final : public Command
+namespace dae
 {
-public:
-	void Execute() override;
-};
+	class ToggleDebugCommand final : public Command
+	{
+	public:
+		void Execute() override;
+	};
+}

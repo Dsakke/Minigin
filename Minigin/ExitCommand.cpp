@@ -1,12 +1,14 @@
 #include "MiniginPCH.h"
 #include "ExitCommand.h"
-
-ExitCommand::ExitCommand(bool& doContinue)
-	: m_Continue{ doContinue }
+namespace dae
 {
-}
+	ExitCommand::ExitCommand(bool& doContinue)
+		: m_Continue{ doContinue }
+	{
+	}
 
-void ExitCommand::Execute()
-{
-	m_Continue = false;
+	void ExitCommand::Execute()
+	{
+		m_Continue = false;
+	}
 }
