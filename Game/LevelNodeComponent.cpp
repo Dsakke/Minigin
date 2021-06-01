@@ -39,10 +39,6 @@ void LevelNodeComponent::Draw()
 
 void LevelNodeComponent::Initialize()
 {
-}
-
-void LevelNodeComponent::SteppedOn()
-{
 	if (!m_pSpriteRenderer)
 	{
 		if (auto pOwner = m_pOwner.lock())
@@ -55,6 +51,10 @@ void LevelNodeComponent::SteppedOn()
 			}
 		}
 	}
+}
+
+void LevelNodeComponent::SteppedOn()
+{
 	switch (m_NodeMode)
 	{
 	case NodeMode::level1:
