@@ -41,3 +41,7 @@ void ScoreComponent::Update()
 void ScoreComponent::Draw()
 {
 }
+
+void ScoreComponent::Initialize()
+{
+}

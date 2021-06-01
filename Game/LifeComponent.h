@@ -25,6 +25,7 @@ public:
 
 	void Update() override;
 	void Draw() override;
+	void Initialize() override;
 private:
 	std::vector<std::shared_ptr<dae::SpriteRenderComponent>> m_pHearts;
 	std::shared_ptr<dae::Texture2D> m_pEmptyHeart;

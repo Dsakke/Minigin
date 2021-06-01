@@ -1,6 +1,27 @@
 #include "MiniginPCH.h"
 #include "Component.h"
 
+dae::Component::Component()
+	: m_pOwner{}
+	, m_IsInitialized{}
+{
+}
+
+void dae::Component::RootUpdate()
+{
+	if (!m_IsInitialized)
+	{
+		RootInitialize();
+	}
+	Update();
+}
+
+void dae::Component::RootInitialize()
+{
+	Initialize();
+	m_IsInitialized = true;
+}
+
 void dae::Component::SetOwner(std::weak_ptr<GameObject> pOwner)
 {
 	m_pOwner = pOwner;

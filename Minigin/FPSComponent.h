@@ -10,6 +10,7 @@ namespace dae
 
 		void Update() override;
 		void Draw() override;
+		void Initialize() override;
 	private:
 
 	};

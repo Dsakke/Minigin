@@ -22,3 +22,7 @@ void dae::FPSComponent::Update()
 void dae::FPSComponent::Draw()
 {
 }
+
+void dae::FPSComponent::Initialize()
+{
+}

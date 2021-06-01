@@ -11,6 +11,8 @@ public:
 	void OnNotify(const std::shared_ptr<dae::GameObject> pGameObject, Events event) override;
 	void Update() override;
 	void Draw() override;
+	void Initialize() override;
+
 
 private:
 	int m_Score;

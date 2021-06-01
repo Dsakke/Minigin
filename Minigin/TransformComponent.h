@@ -14,6 +14,7 @@ namespace dae
 
 		void Update() override;
 		void Draw() override;
+		void Initialize() override;
 
 		const Transform& GetTransform() const;
 		void SetPosition(float x, float y, float z);

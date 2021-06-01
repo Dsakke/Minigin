@@ -37,6 +37,10 @@ void LevelNodeComponent::Draw()
 {
 }
 
+void LevelNodeComponent::Initialize()
+{
+}
+
 void LevelNodeComponent::SteppedOn()
 {
 	if (!m_pSpriteRenderer)

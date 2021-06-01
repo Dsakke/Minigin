@@ -24,6 +24,8 @@ public:
 	~LevelNodeComponent() = default;
 	void Update() override;
 	void Draw() override;
+	void Initialize() override;
+
 
 	void SteppedOn();
 protected:

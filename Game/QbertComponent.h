@@ -25,6 +25,8 @@ public:
 
 	void Update() override;
 	void Draw() override;
+	void Initialize() override;
+
 private:
 	std::weak_ptr<dae::TransformComponent> m_pTransform;
 	std::weak_ptr<LevelComponent> m_pLevelComponent;

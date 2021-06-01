@@ -50,6 +50,10 @@ void LifeComponent::Draw()
 {
 }
 
+void LifeComponent::Initialize()
+{
+}
+
 void LifeComponent::Died()
 {
 }

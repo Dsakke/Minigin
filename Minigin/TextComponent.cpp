@@ -73,4 +73,8 @@ namespace dae
 		}
 	}
 
+	void TextComponent::Initialize()
+	{
+	}
+
 }

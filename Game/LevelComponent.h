@@ -24,6 +24,8 @@ public:
 
 	void Draw() override;
 	void Update() override;
+	void Initialize() override;
+
 	bool FallsOfLevel(int x, int y) const;
 	void StepOnTile(int x, int y);
 	glm::vec2 GetTilePos(int x, int y) const;

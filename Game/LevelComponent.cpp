@@ -41,6 +41,10 @@ void LevelComponent::Update()
 {
 }
 
+void LevelComponent::Initialize()
+{
+}
+
 bool LevelComponent::FallsOfLevel(int x, int y) const
 {
 	if (x < 0 || y < 0)

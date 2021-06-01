@@ -13,3 +13,7 @@ void PlayFieldComponent::Draw()
 {
 	
 }
+
+void PlayFieldComponent::Initialize()
+{
+}

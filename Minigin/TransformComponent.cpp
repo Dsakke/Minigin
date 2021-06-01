@@ -25,6 +25,10 @@ namespace dae
 	{
 	}
 
+	void TransformComponent::Initialize()
+	{
+	}
+
 	const Transform& TransformComponent::GetTransform() const
 	{
 		return m_Transform;

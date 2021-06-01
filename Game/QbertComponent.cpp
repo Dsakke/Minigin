@@ -81,11 +81,8 @@ void QBertComponent::Draw()
 {
 }
 
-void QBertComponent::FellOffGrid()
+void QBertComponent::Initialize()
 {
-	m_GridX = 0;
-	m_GridY = 0;
-	MoveToNewPos();
 	auto pLife = m_pLifeComponent.lock();
 	if (!pLife)
 	{
@@ -94,13 +91,11 @@ void QBertComponent::FellOffGrid()
 			pLife = pOwner->GetComponent<LifeComponent>();
 			m_pLifeComponent = pLife;
 		}
+		else
+		{
+			throw std::runtime_error(std::string("QBertComponent::Update >> QBertComponent attached to GameObject without LifeComponent"));
+		}
 	}
-	pLife->LoseLife();
-	
-}
-
-void QBertComponent::MoveToNewPos()
-{
 	if (!m_pTransform.lock())
 	{
 		if (auto pOwner = m_pOwner.lock())
@@ -112,10 +107,24 @@ void QBertComponent::MoveToNewPos()
 			}
 			else
 			{
-				throw std::runtime_error(std::string("QBertComponent::Update >> QBertComponent attached to GameObject without transfrom"));
+				throw std::runtime_error(std::string("QBertComponent::Update >> QBertComponent attached to GameObject without TransformComponent"));
 			}
 		}
 	}
+}
+
+void QBertComponent::FellOffGrid()
+{
+	m_GridX = 0;
+	m_GridY = 0;
+	MoveToNewPos();
+	auto pLife = m_pLifeComponent.lock();
+	pLife->LoseLife();
+	
+}
+
+void QBertComponent::MoveToNewPos()
+{
 	auto pTrans = m_pTransform.lock();
 	auto pLevel = m_pLevelComponent.lock();
 	if (pTrans && pLevel)
