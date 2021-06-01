@@ -2,6 +2,8 @@
 #include "LevelNodeComponent.h"
 #include "GameObject.h"
 #include "TransformComponent.h"
+#include "ScoreComponent.h"
+
 LevelComponent::LevelComponent(Level&& level, int nodeSize)
 	: m_Level{level}
 	, m_TotalNodes{0}
@@ -70,6 +72,10 @@ void LevelComponent::StepOnTile(int x, int y)
 	{
 		std::shared_ptr<LevelNodeComponent> pNode =  m_Level[y][x];
 		pNode->SteppedOn();
+		if (m_ActiveNodes >= m_TotalNodes)
+		{
+			LevelWon();
+		}
 	}
 }
 
@@ -96,6 +102,17 @@ Level& LevelComponent::GetLevel()
 int LevelComponent::GetNodeSize() const
 {
 	return m_NodeSize;
+}
+
+void LevelComponent::AddScoreObserver(std::weak_ptr<ScoreComponent> pScore)
+{
+	for (std::vector<std::shared_ptr<LevelNodeComponent>> row : m_Level)
+	{
+		for (std::shared_ptr<LevelNodeComponent> pNode : row)
+		{
+			pNode->AddObserver(pScore);
+		}
+	}
 }
 
 void LevelComponent::LevelWon()

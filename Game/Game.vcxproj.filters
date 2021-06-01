@@ -55,6 +55,9 @@
     <ClCompile Include="LifeComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="ScoreComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LevelLoader.h">
@@ -82,6 +85,9 @@
       <Filter>Commands\MovementCommands</Filter>
     </ClInclude>
     <ClInclude Include="LifeComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

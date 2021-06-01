@@ -6,6 +6,21 @@
 #include "TransformComponent.h"
 #include "QbertComponent.h"
 #include "LevelComponent.h"
+#include "TextComponent.h"
+#include "ScoreComponent.h"
+
+std::shared_ptr<dae::GameObject> Factories::ScoreFactory(std::shared_ptr<dae::Font> pFont)
+{
+	std::shared_ptr<dae::GameObject> pObject = std::make_shared<dae::GameObject>();
+	std::shared_ptr<dae::TextComponent> pText = std::make_shared<dae::TextComponent>(pFont);
+	std::shared_ptr<ScoreComponent> pScore = std::make_shared<ScoreComponent>();
+	std::shared_ptr<dae::TransformComponent> pTransform = std::make_shared<dae::TransformComponent>();
+
+	pObject->AddComponent(pText);
+	pObject->AddComponent(pScore);
+	pObject->AddComponent(pTransform);
+	return pObject;
+}
 
 std::shared_ptr<dae::GameObject> Factories::LevelNodeFactory(std::shared_ptr<dae::Texture2D> pTextureNotActive, std::shared_ptr<dae::Texture2D> pTextureActive, LevelNodeComponent::NodeMode mode)
 {

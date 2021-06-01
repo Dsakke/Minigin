@@ -10,6 +10,7 @@ namespace dae
 	class GameObject;
 }
 class LevelNodeComponent;
+class ScoreComponent;
 typedef std::vector<std::vector<std::shared_ptr<LevelNodeComponent>>> Level;
 class LevelComponent final : public dae::Component, public dae::Observer, public std::enable_shared_from_this<LevelComponent>
 {
@@ -31,6 +32,8 @@ public:
 	glm::vec2 GetTilePos(int x, int y) const;
 	Level& GetLevel();
 	int GetNodeSize() const;
+
+	void AddScoreObserver(std::weak_ptr<ScoreComponent> pScore);
 
 private:
 	void LevelWon();

@@ -26,6 +26,7 @@
 #include "FPSComponent.h"
 #include "TextComponent.h"
 #include "LifeComponent.h"
+#include "ScoreComponent.h"
 
 void LoadGame();
 
@@ -53,7 +54,8 @@ void LoadGame()
 	dae::Scene& scene = dae::SceneManager::GetInstance().CreateScene("SandBox");
 	dae::SceneManager::GetInstance().SetCurrentScene("SandBox");
 	std::shared_ptr<dae::Font> pFont = resourceManager.LoadFont("Lingua.otf", 16);
-
+	
+	// Create FPS Counter
 	std::shared_ptr<dae::GameObject> pFPSObject = std::make_shared<dae::GameObject>();
 	std::shared_ptr<dae::TextComponent> pFPSText = std::make_shared<dae::TextComponent>(pFont);
 	std::shared_ptr<dae::FPSComponent> pFPS = std::make_shared<dae::FPSComponent>();
@@ -63,18 +65,21 @@ void LoadGame()
 	pFPSObject->AddComponent(pFPS);
 	scene.Add(pFPSObject);
 
+	// Load Level
 	dae::Transform transform{};
 	transform.SetPosition(304, 100, 0);
 	std::shared_ptr<LevelComponent> pLevel = LoadLevel("../data/level1.json", scene, transform);
 	std::shared_ptr<dae::GameObject> pQbert = Factories::QBertFactory(pLevel, resourceManager.LoadTexture("qbert.png"));
 
+	// Create QBert
 	std::shared_ptr<dae::Texture2D> pFullheart = resourceManager.LoadTexture("heart.png");
 	std::shared_ptr<dae::Texture2D> pEmptyheart = resourceManager.LoadTexture("heartEmpty.png");
 	std::shared_ptr<LifeComponent> pLife = std::make_shared<LifeComponent>(scene, glm::vec2{20, 40}, pEmptyheart, pFullheart);
 	pQbert->AddComponent(pLife);
 	scene.Add(pQbert);
 
-	std::weak_ptr<QBertComponent> pQbertComponent = pQbert->GetComponent<QBertComponent>();
+	// Create Inputs
+	std::shared_ptr<QBertComponent> pQbertComponent = pQbert->GetComponent<QBertComponent>();
 	dae::InputAction moveUpAction{ std::make_shared<MoveUpCommand>(pQbertComponent), dae::InputType::keyDown, dae::ControllerButton::DPadUp, SDL_SCANCODE_UP };
 	inputManager.AddAction(std::move(moveUpAction));
 	dae::InputAction moveDownAction{ std::make_shared<MoveDownCommand>(pQbertComponent), dae::InputType::keyDown, dae::ControllerButton::DPadDown, SDL_SCANCODE_DOWN };
@@ -84,6 +89,13 @@ void LoadGame()
 	dae::InputAction moveRightAction{ std::make_shared<MoveRightCommand>(pQbertComponent), dae::InputType::keyDown, dae::ControllerButton::DPadRight, SDL_SCANCODE_RIGHT };
 	inputManager.AddAction(std::move(moveRightAction));
 	
+	// Create Score
+	std::shared_ptr<dae::GameObject> pScoreObject = Factories::ScoreFactory(pFont);
+	scene.Add(pScoreObject);
+	std::weak_ptr<ScoreComponent> pScore = pScoreObject->GetComponent<ScoreComponent>();
+	std::shared_ptr<dae::TransformComponent> pScoreTransform = pScoreObject->GetComponent<dae::TransformComponent>();
+	pScoreTransform->SetPosition(20.f, 60.f, 0.f);
+	pQbertComponent->AddObserver(pScore);
 
-	
+	pLevel->AddScoreObserver(pScore);
 }
