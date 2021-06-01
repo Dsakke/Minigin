@@ -55,6 +55,9 @@
     <ClCompile Include="MoveUpCommand.cpp">
       <Filter>Commands\MovementCommands</Filter>
     </ClCompile>
+    <ClCompile Include="LifeComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayFieldComponent.h">
@@ -83,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="MoveUpCommand.h">
       <Filter>Commands\MovementCommands</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

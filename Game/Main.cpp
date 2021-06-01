@@ -25,6 +25,7 @@
 #include "MoveRightCommand.h"
 #include "FPSComponent.h"
 #include "TextComponent.h"
+#include "LifeComponent.h"
 
 void LoadGame();
 
@@ -66,6 +67,11 @@ void LoadGame()
 	transform.SetPosition(304, 100, 0);
 	std::shared_ptr<LevelComponent> pLevel = LoadLevel("../data/level1.json", scene, transform);
 	std::shared_ptr<dae::GameObject> pQbert = Factories::QBertFactory(pLevel, resourceManager.LoadTexture("qbert.png"));
+
+	std::shared_ptr<dae::Texture2D> pFullheart = resourceManager.LoadTexture("heart.png");
+	std::shared_ptr<dae::Texture2D> pEmptyheart = resourceManager.LoadTexture("heartEmpty.png");
+	std::shared_ptr<LifeComponent> pLife = std::make_shared<LifeComponent>(scene, glm::vec2{20, 40}, pEmptyheart, pFullheart);
+	pQbert->AddComponent(pLife);
 	scene.Add(pQbert);
 
 	std::weak_ptr<QBertComponent> pQbertComponent = pQbert->GetComponent<QBertComponent>();

@@ -3,10 +3,12 @@
 #include "TransformComponent.h"
 #include "LevelComponent.h"
 #include <stdexcept>
+#include "LifeComponent.h"
 
 QBertComponent::QBertComponent(std::weak_ptr<LevelComponent> pLevel)
 	: m_pTransform{}
 	, m_pLevelComponent{pLevel}
+	, m_pLifeComponent{}
 	, m_GridX{0}
 	, m_GridY{0}
 {
@@ -72,6 +74,33 @@ void QBertComponent::MoveDown()
 
 void QBertComponent::Update()
 {
+
+}
+
+void QBertComponent::Draw()
+{
+}
+
+void QBertComponent::FellOffGrid()
+{
+	m_GridX = 0;
+	m_GridY = 0;
+	MoveToNewPos();
+	auto pLife = m_pLifeComponent.lock();
+	if (!pLife)
+	{
+		if (auto pOwner = m_pOwner.lock())
+		{
+			pLife = pOwner->GetComponent<LifeComponent>();
+			m_pLifeComponent = pLife;
+		}
+	}
+	pLife->LoseLife();
+	
+}
+
+void QBertComponent::MoveToNewPos()
+{
 	if (!m_pTransform.lock())
 	{
 		if (auto pOwner = m_pOwner.lock())
@@ -87,21 +116,6 @@ void QBertComponent::Update()
 			}
 		}
 	}
-}
-
-void QBertComponent::Draw()
-{
-}
-
-void QBertComponent::FellOffGrid()
-{
-	m_GridX = 0;
-	m_GridY = 0;
-	MoveToNewPos();
-}
-
-void QBertComponent::MoveToNewPos()
-{
 	auto pTrans = m_pTransform.lock();
 	auto pLevel = m_pLevelComponent.lock();
 	if (pTrans && pLevel)
