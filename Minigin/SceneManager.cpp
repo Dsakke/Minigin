@@ -4,20 +4,24 @@
 #include <algorithm>
 #include <stdexcept>
 
+void dae::SceneManager::SetCurrentScene(const std::string name)
+{
+	auto pred = [=](const std::shared_ptr<Scene>& scene) { return scene->GetName() == name; };
+	auto it = std::find_if(m_Scenes.begin(), m_Scenes.end(), pred);
+	if (it != m_Scenes.end())
+	{
+		m_pCurrentScene = *it;
+	}
+}
+
 void dae::SceneManager::Update()
 {
-	for(auto& scene : m_Scenes)
-	{
-		scene->Update();
-	}
+	m_pCurrentScene->Update();
 }
 
 void dae::SceneManager::Render()
 {
-	for (const auto& scene : m_Scenes)
-	{
-		scene->Render();
-	}
+	m_pCurrentScene->Render();
 }
 
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
@@ -36,4 +40,9 @@ dae::Scene& dae::SceneManager::GetScene(const std::string& name)
 		return **it;
 	}
 	return CreateScene(name);
+}
+
+dae::Scene& dae::SceneManager::GetCurrentScene()
+{
+	return *m_pCurrentScene;
 }

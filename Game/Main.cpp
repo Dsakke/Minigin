@@ -51,7 +51,7 @@ void LoadGame()
 	dae::ResourceManager& resourceManager = dae::ResourceManager::GetInstance();
 
 	dae::Scene& scene = dae::SceneManager::GetInstance().CreateScene("SandBox");
-
+	dae::SceneManager::GetInstance().SetCurrentScene("SandBox");
 	std::shared_ptr<dae::Font> pFont = resourceManager.LoadFont("Lingua.otf", 16);
 
 	std::shared_ptr<dae::GameObject> pFPSObject = std::make_shared<dae::GameObject>();

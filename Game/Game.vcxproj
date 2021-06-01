@@ -190,7 +190,6 @@ xcopy "$(SolutionDir)3rdParty\FMOD\lib\x64\*.dll" "$(outputPath)" /R /Y</Command
     <ClCompile Include="MoveLeftCommand.h" />
     <ClCompile Include="MoveRightCommand.cpp" />
     <ClCompile Include="MoveUpCommand.cpp" />
-    <ClCompile Include="PlayFieldComponent.cpp" />
     <ClCompile Include="QbertComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,7 +201,6 @@ xcopy "$(SolutionDir)3rdParty\FMOD\lib\x64\*.dll" "$(outputPath)" /R /Y</Command
     <ClInclude Include="MoveDownCommand.h" />
     <ClInclude Include="MoveRightCommand.h" />
     <ClInclude Include="MoveUpCommand.h" />
-    <ClInclude Include="PlayFieldComponent.h" />
     <ClInclude Include="QbertComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
