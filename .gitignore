@@ -2,7 +2,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,c++
 
-# don't ignore anything in the 3rdParty folder
+
 
 
 
@@ -397,6 +397,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-
+!3rdParty/*/*
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,c++
