@@ -17,7 +17,7 @@ void dae::GameObject::Update()
 {
 	for (std::shared_ptr<Component> comp : m_Components)
 	{
-		comp->Update();
+		comp->RootUpdate();
 	}
 }
 
