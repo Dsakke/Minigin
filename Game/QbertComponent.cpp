@@ -131,5 +131,6 @@ void QBertComponent::MoveToNewPos()
 	{
 		glm::vec2 pos = pLevel->GetTilePos(m_GridX, m_GridY);
 		pTrans->SetPosition(pos.x, pos.y, 0);
+		pLevel->StepOnTile(m_GridX, m_GridY);
 	}
 }
