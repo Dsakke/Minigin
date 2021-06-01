@@ -16,7 +16,6 @@
 #include "SpriteRenderComponent.h"
 #include "ExitCommand.h"
 #include "ToggleDebugWindowCommand.h"
-#include "ScoreComponent.h"
 #include "SoundLocator.h"
 #include "SoundSystem.h"
 #include "SoundSystemLogger.h"
