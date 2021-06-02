@@ -44,6 +44,13 @@
 //  2017-08-25: Inputs: MousePos set to -FLT_MAX,-FLT_MAX when mouse is unavailable/missing (instead of -1,-1).
 //  2016-10-15: Misc: Added a void* user_data parameter to Clipboard function handlers.
 
+//  Fixes error that shouldn't be happening
+// This error should only happen when the setting struct packing isn't on default but it is
+// the warnings are the same
+#define WINDOWS_IGNORE_PACKING_MISMATCH 
+#pragma warning(push)
+#pragma warning (disable:4121)
+
 #include "imgui.h"
 #include "imgui_impl_sdl.h"
 
@@ -59,6 +66,7 @@
 
 #define WIN32_MEAN_AND_LEAN
 #include <Windows.h>
+#pragma warning(pop)
 
 // Data
 static SDL_Window*  g_Window = NULL;

@@ -38,7 +38,7 @@ std::shared_ptr<dae::GameObject> Factories::LevelNodeFactory(std::shared_ptr<dae
 	return pObject;
 }
 
-std::shared_ptr<dae::GameObject> Factories::LevelNodeFactory(std::shared_ptr<dae::Texture2D> pTextureNotActive, std::shared_ptr<dae::Texture2D> pTextureActive, std::shared_ptr<dae::Texture2D> pTextureHalfActive)
+std::shared_ptr<dae::GameObject> Factories::LevelNodeFactory(std::shared_ptr<dae::Texture2D> pTextureNotActive, std::shared_ptr<dae::Texture2D> pTextureHalfActive, std::shared_ptr<dae::Texture2D> pTextureActive)
 {
 	std::shared_ptr<dae::GameObject> pObject = std::make_shared<dae::GameObject>();
 

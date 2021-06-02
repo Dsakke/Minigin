@@ -90,5 +90,8 @@
     <ClInclude Include="ScoreComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="LevelSwitcher.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

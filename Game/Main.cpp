@@ -68,7 +68,7 @@ void LoadGame()
 	// Load Level
 	dae::Transform transform{};
 	transform.SetPosition(304, 100, 0);
-	std::shared_ptr<LevelComponent> pLevel = LoadLevel("../data/level1.json", scene, transform);
+	std::shared_ptr<LevelComponent> pLevel = LoadLevel("../data/level2.json", scene, transform);
 	std::shared_ptr<dae::GameObject> pQbert = Factories::QBertFactory(pLevel, resourceManager.LoadTexture("qbert.png"));
 
 	// Create QBert
