@@ -22,7 +22,8 @@ std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, dae::Scene& s
 
     rapidjson::Document jsonDoc;
     FILE* pF = nullptr;
-    pF = _fsopen(file.c_str(), "r", _SH_DENYWR);
+    // r stands for read, opening it with "r" will make it read only
+    pF = _fsopen(file.c_str(), "r", _SH_DENYWR); // _SH_DENYWR means it will lock the file denying anything else writing writes while it is open
     
 
     if (!pF)
