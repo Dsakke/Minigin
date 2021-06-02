@@ -1,4 +1,5 @@
 #pragma once
+#include <Windows.h>
 #include <memory>
 #include <string>
 
@@ -10,4 +11,4 @@ namespace dae
 }
 class LevelComponent;
 
-std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, dae::Scene& scene, const dae::Transform& transfrom);
+std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, const dae::Transform& transfrom);

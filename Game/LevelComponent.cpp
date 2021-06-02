@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "TransformComponent.h"
 #include "ScoreComponent.h"
+#include "LevelSwitcher.h"
 
 LevelComponent::LevelComponent(Level&& level, int nodeSize)
 	: m_Level{level}
@@ -10,10 +11,7 @@ LevelComponent::LevelComponent(Level&& level, int nodeSize)
 	, m_ActiveNodes{0}
 	, m_NodeSize{nodeSize}
 {
-	for (size_t i{}; i < level.size(); ++i)
-	{
-		m_TotalNodes += static_cast<int>(level[i].size());
-	}
+
 }
 
 void LevelComponent::OnNotify(const std::shared_ptr<dae::GameObject> pGameObject, Events event)
@@ -45,6 +43,14 @@ void LevelComponent::Update()
 
 void LevelComponent::Initialize()
 {
+	for (size_t i{}; i < m_Level.size(); ++i)
+	{
+		m_TotalNodes += static_cast<int>(m_Level[i].size());
+		for (size_t node{}; node < m_Level[i].size(); ++node)
+		{
+			m_Level[i][node]->AddObserver(shared_from_this());
+		}
+	}
 }
 
 bool LevelComponent::FallsOfLevel(int x, int y) const
@@ -72,10 +78,6 @@ void LevelComponent::StepOnTile(int x, int y)
 	{
 		std::shared_ptr<LevelNodeComponent> pNode =  m_Level[y][x];
 		pNode->SteppedOn();
-		if (m_ActiveNodes >= m_TotalNodes)
-		{
-			LevelWon();
-		}
 	}
 }
 
@@ -117,5 +119,5 @@ void LevelComponent::AddScoreObserver(std::weak_ptr<ScoreComponent> pScore)
 
 void LevelComponent::LevelWon()
 {
-
+	LevelSwitcher::GetInstance().LoadNextlevel();
 }
