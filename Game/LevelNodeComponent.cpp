@@ -6,7 +6,7 @@
 
 LevelNodeComponent::LevelNodeComponent(std::shared_ptr<dae::Texture2D> pTextureNotActive, std::shared_ptr<dae::Texture2D> pTextureActive, NodeMode mode)
 	: m_pSpriteRenderer{}
-	, m_pTextureNotActive{pTextureActive}
+	, m_pTextureNotActive{pTextureNotActive}
 	, m_pTextureHalfActive{}
 	, m_pTextureActive{pTextureActive}
 	, m_NodeMode{ mode }
@@ -111,6 +111,7 @@ void LevelNodeComponent::Level3SteppedOn()
 {
 	if (m_StepCount == 1)
 	{
+		m_pSpriteRenderer->SetTexture(m_pTextureNotActive);
 		--m_StepCount;
 		if (auto pOwner = m_pOwner.lock())
 		{
@@ -119,6 +120,7 @@ void LevelNodeComponent::Level3SteppedOn()
 	}
 	else
 	{
+		m_pSpriteRenderer->SetTexture(m_pTextureActive);
 		++m_StepCount;
 		if (auto pOwner = m_pOwner.lock())
 		{
