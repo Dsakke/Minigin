@@ -58,6 +58,9 @@
     <ClCompile Include="ScoreComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="LevelSwitcher.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LevelLoader.h">

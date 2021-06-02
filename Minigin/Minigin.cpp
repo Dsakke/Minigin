@@ -72,14 +72,11 @@ void dae::Minigin::Run()
 	{
 		auto& renderer = Renderer::GetInstance();
 		auto& sceneManager = SceneManager::GetInstance();
-		auto& input = InputManager::GetInstance();
-		
 		bool doContinue = true;
 
 
 
-		InputAction toggleWindowAction{ std::make_shared<ToggleDebugCommand>(), dae::InputType::keyDown, dae::ControllerButton::Back, SDL_SCANCODE_SPACE };
-		input.AddAction(std::move(toggleWindowAction));
+
 
 
 		while (doContinue)
@@ -87,7 +84,7 @@ void dae::Minigin::Run()
 			Time::GetInstance()->UpdateTime();
 			const auto currentTime = high_resolution_clock::now();
 			
-			doContinue = input.ProcessInput();
+			doContinue = sceneManager.GetCurrentScene().GetInputManager().ProcessInput();
 			sceneManager.Update();
 			renderer.Render();
 			

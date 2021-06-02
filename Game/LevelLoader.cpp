@@ -18,6 +18,10 @@
 
 std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, dae::Scene& scene, const dae::Transform& transfrom)
 {
+
+
+
+
  // This code is based on an example given to me by Kristof (Don't know his last name)
 
     rapidjson::Document jsonDoc;
@@ -105,5 +109,6 @@ std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, dae::Scene& s
         }
     }
     scene.Add(pObject);
+
     return pLevelComp;
 }

@@ -183,6 +183,7 @@ xcopy "$(SolutionDir)3rdParty\FMOD\lib\x64\*.dll" "$(outputPath)" /R /Y</Command
     <ClCompile Include="LevelComponent.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LevelNodeComponent.cpp" />
+    <ClCompile Include="LevelSwitcher.cpp" />
     <ClCompile Include="LifeComponent.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoveDownCommand.cpp" />

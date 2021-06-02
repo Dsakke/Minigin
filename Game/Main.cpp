@@ -46,14 +46,13 @@ int main(int, char* [])
 void LoadGame()
 {
 	//dae::InputManager& inputManager = dae::InputManager::GetInstance();
-	
-	dae::InputManager& inputManager = dae::InputManager::GetInstance();
 	dae::SoundLocator::ProvideSoundSystem(std::make_shared<dae::SoundSystem>());
 	dae::ResourceManager& resourceManager = dae::ResourceManager::GetInstance();
 
-	dae::Scene& scene = dae::SceneManager::GetInstance().CreateScene("SandBox");
-	dae::SceneManager::GetInstance().SetCurrentScene("SandBox");
+	dae::Scene& scene = dae::SceneManager::GetInstance().CreateScene("Level1");
+	dae::SceneManager::GetInstance().SetCurrentScene("Level1");
 	std::shared_ptr<dae::Font> pFont = resourceManager.LoadFont("Lingua.otf", 16);
+	dae::InputManager& inputManager = scene.GetInputManager();
 	
 	// Create FPS Counter
 	std::shared_ptr<dae::GameObject> pFPSObject = std::make_shared<dae::GameObject>();

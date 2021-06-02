@@ -55,9 +55,10 @@ namespace dae
 	};
 
 
-	class InputManager final : public Singleton<InputManager>
+	class InputManager final
 	{
 	public:
+		InputManager();
 		~InputManager();
 
 		bool ProcessInput();
@@ -74,7 +75,6 @@ namespace dae
 		XINPUT_STATE m_ControllerState;
 		XINPUT_STATE m_PrevControllerState;
 
-		InputManager();
 
 		friend class Singleton<InputManager>;
 

@@ -3,6 +3,7 @@
 
 namespace dae
 {
+	class InputManager;
 	class GameObject;
 	class Scene final
 	{
@@ -19,13 +20,14 @@ namespace dae
 		Scene& operator=(const Scene& other) = delete;
 		Scene& operator=(Scene&& other) = delete;
 
+		InputManager& GetInputManager();
 		const std::string& GetName() const;
 	private: 
 		explicit Scene(const std::string& name);
 
 		std::string m_Name;
 		std::vector < std::shared_ptr<GameObject>> m_Objects{};
-
+		std::shared_ptr<dae::InputManager> m_pInputManager;
 		static unsigned int m_IdCounter; 
 	};
 
