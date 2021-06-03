@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "Subject.h"
+#include "glm.hpp"
 namespace dae
 {
 	class TransformComponent;
@@ -31,8 +32,8 @@ private:
 	std::weak_ptr<dae::TransformComponent> m_pTransform;
 	std::weak_ptr<LevelComponent> m_pLevelComponent;
 	std::weak_ptr<LifeComponent> m_pLifeComponent;
-	int m_GridX;
-	int m_GridY;
+	
+	glm::ivec2 m_GridCoords;
 
 
 	void FellOffGrid();

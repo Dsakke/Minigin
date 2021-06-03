@@ -58,7 +58,7 @@ std::shared_ptr<dae::GameObject> Factories::QBertFactory(std::weak_ptr<LevelComp
 {
 	std::shared_ptr<LevelComponent> pLevelShared = pLevel.lock();
 
-	glm::vec2 initPos = pLevelShared->GetTilePos(0, 0); // (0,0) is the top of the pyramid
+	glm::vec2 initPos = pLevelShared->GetTilePos(glm::ivec2{0, 0}); // (0,0) is the top of the pyramid
 	std::shared_ptr<dae::TransformComponent> pTransform = std::make_shared<dae::TransformComponent>(initPos.x, initPos.y, 0.f);
 
 	std::shared_ptr<QBertComponent> pQBert = std::make_shared<QBertComponent>(pLevel);

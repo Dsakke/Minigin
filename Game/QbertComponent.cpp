@@ -9,18 +9,17 @@ QBertComponent::QBertComponent(std::weak_ptr<LevelComponent> pLevel)
 	: m_pTransform{}
 	, m_pLevelComponent{pLevel}
 	, m_pLifeComponent{}
-	, m_GridX{0}
-	, m_GridY{0}
+	, m_GridCoords{0,0}
 {
 }
 
 void QBertComponent::MoveLeft()
 {
-	--m_GridX;
-	--m_GridY;
+	--m_GridCoords.x;
+	--m_GridCoords.y;
 	if (auto pLevel = m_pLevelComponent.lock())
 	{
-		if (pLevel->FallsOfLevel(m_GridX, m_GridY))
+		if (pLevel->FallsOfLevel(m_GridCoords))
 		{
 			FellOffGrid();
 			return;
@@ -31,11 +30,11 @@ void QBertComponent::MoveLeft()
 
 void QBertComponent::MoveRight()
 {
-	++m_GridX;
-	++m_GridY;
+	++m_GridCoords.x;
+	++m_GridCoords.y;
 	if (auto pLevel = m_pLevelComponent.lock())
 	{
-		if (pLevel->FallsOfLevel(m_GridX, m_GridY))
+		if (pLevel->FallsOfLevel(m_GridCoords))
 		{
 			FellOffGrid();
 			return;
@@ -46,10 +45,10 @@ void QBertComponent::MoveRight()
 
 void QBertComponent::MoveUp()
 {
-	--m_GridY;
+	--m_GridCoords.y;
 	if (auto pLevel = m_pLevelComponent.lock())
 	{
-		if (pLevel->FallsOfLevel(m_GridX, m_GridY))
+		if (pLevel->FallsOfLevel(m_GridCoords))
 		{
 			FellOffGrid();
 			return;
@@ -60,10 +59,10 @@ void QBertComponent::MoveUp()
 
 void QBertComponent::MoveDown()
 {
-	++m_GridY;
+	++m_GridCoords.y;
 	if (auto pLevel = m_pLevelComponent.lock())
 	{
-		if (pLevel->FallsOfLevel(m_GridX, m_GridY))
+		if (pLevel->FallsOfLevel(m_GridCoords))
 		{
 			FellOffGrid();
 			return;
@@ -115,8 +114,7 @@ void QBertComponent::Initialize()
 
 void QBertComponent::FellOffGrid()
 {
-	m_GridX = 0;
-	m_GridY = 0;
+	m_GridCoords = glm::ivec2{ 0,0 };
 	MoveToNewPos();
 	auto pLife = m_pLifeComponent.lock();
 	pLife->LoseLife();
@@ -129,8 +127,8 @@ void QBertComponent::MoveToNewPos()
 	auto pLevel = m_pLevelComponent.lock();
 	if (pTrans && pLevel)
 	{
-		glm::vec2 pos = pLevel->GetTilePos(m_GridX, m_GridY);
+		glm::vec2 pos = pLevel->GetTilePos(m_GridCoords);
 		pTrans->SetPosition(pos.x, pos.y, 0);
-		pLevel->StepOnTile(m_GridX, m_GridY);
+		pLevel->StepOnTile(m_GridCoords);
 	}
 }

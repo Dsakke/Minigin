@@ -27,9 +27,9 @@ public:
 	void Update() override;
 	void Initialize() override;
 
-	bool FallsOfLevel(int x, int y) const;
-	void StepOnTile(int x, int y);
-	glm::vec2 GetTilePos(int x, int y) const;
+	bool FallsOfLevel(const glm::ivec2& coords) const;
+	void StepOnTile(const glm::ivec2& coords);
+	glm::vec2 GetTilePos(const glm::ivec2& coords) const;
 	Level& GetLevel();
 	int GetNodeSize() const;
 

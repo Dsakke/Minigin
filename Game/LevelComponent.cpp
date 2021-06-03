@@ -53,39 +53,39 @@ void LevelComponent::Initialize()
 	}
 }
 
-bool LevelComponent::FallsOfLevel(int x, int y) const
+bool LevelComponent::FallsOfLevel(const glm::ivec2& coords) const
 {
-	if (x < 0 || y < 0)
+	if (coords.x < 0 || coords.y < 0)
 	{
 		return true;
 	}
 	// we can cast to unsigned here because negative numbers would already have exited the function
-	if (static_cast<size_t>(y) >= m_Level.size())
+	if (static_cast<size_t>(coords.y) >= m_Level.size())
 	{
 		return true;
 	}
 	// y already range checked
-	if (static_cast<size_t>(x) >= m_Level[y].size())
+	if (static_cast<size_t>(coords.x) >= m_Level[coords.y].size())
 	{
 		return true;
 	}
 	return false;
 }
 
-void LevelComponent::StepOnTile(int x, int y)
+void LevelComponent::StepOnTile(const glm::ivec2& coords)
 {
-	if (!FallsOfLevel(x, y))
+	if (!FallsOfLevel(coords))
 	{
-		std::shared_ptr<LevelNodeComponent> pNode =  m_Level[y][x];
+		std::shared_ptr<LevelNodeComponent> pNode =  m_Level[coords.y][coords.x];
 		pNode->SteppedOn();
 	}
 }
 
-glm::vec2 LevelComponent::GetTilePos(int x, int y) const
+glm::vec2 LevelComponent::GetTilePos(const glm::ivec2& coords) const
 {
-	if (!FallsOfLevel(x, y))
+	if (!FallsOfLevel(coords))
 	{
-		std::shared_ptr<LevelNodeComponent> pNode = m_Level[y][x];
+		std::shared_ptr<LevelNodeComponent> pNode = m_Level[coords.y][coords.x];
 		if (auto pObject = pNode->GetGameObject().lock())
 		{
 			auto pTransform = pObject->GetComponent<dae::TransformComponent>();
