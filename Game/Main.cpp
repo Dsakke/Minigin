@@ -31,7 +31,6 @@ int main(int, char* [])
 
 void LoadGame()
 {
-	//dae::InputManager& inputManager = dae::InputManager::GetInstance();
 	dae::SoundLocator::ProvideSoundSystem(std::make_shared<dae::SoundSystem>());
 
 
@@ -39,7 +38,8 @@ void LoadGame()
 	std::string level2{ "../data/level2.json" };
 	std::string level3{ "../data/level3.json" };
 
-
+	dae::SceneManager::GetInstance().CreateScene("GameOver");
+	dae::SceneManager::GetInstance().CreateScene("Start");
 	// Load Level
 	dae::Transform transform{};
 	transform.SetPosition(304, 100, 0);
@@ -52,6 +52,10 @@ void LoadGame()
 	levelSwitcher.AddLevel(level2);
 	levelSwitcher.AddLevel(level3);
 	levelSwitcher.LoadFirstLevel();
+
+	levelSwitcher.SetStartMenu("Start");
+	levelSwitcher.SetGameOver("GameOver");
+	
 	
 
 }

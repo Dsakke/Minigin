@@ -5,6 +5,7 @@
 #include "TransformComponent.h"
 #include "GameObject.h"
 #include "Scene.h"
+#include "LevelSwitcher.h"
 
 LifeComponent::LifeComponent(dae::Scene& scene, const glm::vec2& leftHeartPos, std::shared_ptr<dae::Texture2D> pEmptyHeart, std::shared_ptr<dae::Texture2D> pFullHeart, int maxLives)
 	: m_pHearts{}
@@ -56,6 +57,7 @@ void LifeComponent::Initialize()
 
 void LifeComponent::Died()
 {
+	LevelSwitcher::GetInstance().LoadGameOver();
 }
 
 std::shared_ptr<dae::TransformComponent> LifeComponent::HeartFactory(dae::Scene& scene)
