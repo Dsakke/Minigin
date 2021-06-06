@@ -70,7 +70,7 @@ void EnemyComponent::Move()
 
 void EnemyComponent::Reset()
 {
-	m_pBehaviour->SetStartPos(m_GridCoords);
+	m_pBehaviour->SetStartPos(m_GridCoords, m_pLevelComponent);
 	if (auto pLevel = m_pLevelComponent.lock())
 	{
 		glm::vec2 pos = pLevel->GetTilePos(m_GridCoords);
@@ -82,7 +82,7 @@ void EnemyComponent::Reset()
 void EnemyComponent::SetState(std::unique_ptr<IEnemyBehaviour> pBehaviour)
 {
 	m_pBehaviour = std::move(pBehaviour);
-	m_pBehaviour->SetStartPos(m_GridCoords);
+	m_pBehaviour->SetStartPos(m_GridCoords, m_pLevelComponent);
 	if (auto pLevel = m_pLevelComponent.lock())
 	{
 		glm::vec2 pos = pLevel->GetTilePos(m_GridCoords);

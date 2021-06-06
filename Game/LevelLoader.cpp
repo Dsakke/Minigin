@@ -27,6 +27,7 @@
 #include "ScoreComponent.h"
 #include "EnemyManager.h"
 #include "CoilyBehaviour.h"
+#include "UggBehaviour.h"
 
 std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, const dae::Transform& transfrom)
 {
@@ -163,9 +164,16 @@ std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, const dae::Tr
 
     pLevelComp->AddScoreObserver(pScore);
 
+    // Add Enemies
     std::unique_ptr<CoilyBehaviour> pCoilyBehaviour = std::make_unique<CoilyBehaviour>(pQbertComponent, dae::ResourceManager::GetInstance().LoadTexture("Egg.png"), dae::ResourceManager::GetInstance().LoadTexture("Heart.png"));
     pEnemyManager->AddEnemy(std::move(pCoilyBehaviour), dae::ResourceManager::GetInstance().LoadTexture("Egg.png"));
     pEnemyManagerObject->AddComponent(pEnemyManager);
     scene.Add(pEnemyManagerObject);
+
+    std::unique_ptr<UggBehaviour> pUggBehaviour = std::make_unique<UggBehaviour>(true);
+    pEnemyManager->AddEnemy(std::move(pUggBehaviour), dae::ResourceManager::GetInstance().LoadTexture("Egg.png"));
+    std::unique_ptr<UggBehaviour> pWrongWayBehaviour = std::make_unique<UggBehaviour>(false);
+    pEnemyManager->AddEnemy(std::move(pWrongWayBehaviour), dae::ResourceManager::GetInstance().LoadTexture("Egg.png"));
+
     return pLevelComp;
 }

@@ -73,6 +73,9 @@
     <ClCompile Include="EnemyManager.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="UggBehaviour.cpp">
+      <Filter>EnemyBehaviours</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LevelLoader.h">
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="EnemyManager.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="UggBehaviour.h">
+      <Filter>EnemyBehaviours</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

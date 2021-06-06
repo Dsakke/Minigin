@@ -11,11 +11,11 @@ CoilyBehaviour::CoilyBehaviour(std::weak_ptr<QBertComponent> pQBert, std::shared
 
 
 
-void CoilyBehaviour::operator()(glm::ivec2& gridCoords, std::weak_ptr<LevelComponent> pLevel) const
+bool CoilyBehaviour::operator()(glm::ivec2& gridCoords, std::weak_ptr<LevelComponent> pLevel) const
 {
 	if (m_Hatched)
 	{
-		return;
+		return true;
 	}
 	else
 	{
@@ -33,9 +33,11 @@ void CoilyBehaviour::operator()(glm::ivec2& gridCoords, std::weak_ptr<LevelCompo
 			break;
 		}
 	}
+	return false;
+
 }
 
-void CoilyBehaviour::SetStartPos(glm::ivec2& gridCoords)
+void CoilyBehaviour::SetStartPos(glm::ivec2& gridCoords, std::weak_ptr<LevelComponent>)
 {
 	gridCoords.x = rand() % 2;
 	gridCoords.y = 1;
@@ -43,5 +45,5 @@ void CoilyBehaviour::SetStartPos(glm::ivec2& gridCoords)
 
 bool CoilyBehaviour::GetIsHarmfull() const
 {
-	return true;
+	return false;
 }
