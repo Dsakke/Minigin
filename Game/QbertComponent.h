@@ -8,6 +8,7 @@ namespace dae
 }
 class LevelComponent;
 class LifeComponent;
+class EnemyManager;
 
 class QBertComponent final : public dae::Component, public dae::Subject
 {
@@ -17,7 +18,7 @@ public:
 	QBertComponent& operator=(QBertComponent&&) = delete;
 	QBertComponent& operator=(const QBertComponent&) = delete;
 
-	QBertComponent(std::weak_ptr<LevelComponent> pLevel);
+	QBertComponent(std::weak_ptr<LevelComponent> pLevel, std::weak_ptr<EnemyManager> pEnemyManager);
 
 	void MoveLeft();
 	void MoveRight();
@@ -32,6 +33,7 @@ private:
 	std::weak_ptr<dae::TransformComponent> m_pTransform;
 	std::weak_ptr<LevelComponent> m_pLevelComponent;
 	std::weak_ptr<LifeComponent> m_pLifeComponent;
+	std::weak_ptr<EnemyManager> m_pEnemyManager;
 	
 	glm::ivec2 m_GridCoords;
 

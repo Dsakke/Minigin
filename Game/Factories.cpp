@@ -56,14 +56,14 @@ std::shared_ptr<dae::GameObject> Factories::LevelNodeFactory(std::shared_ptr<dae
 	return pObject;
 }
 
-std::shared_ptr<dae::GameObject> Factories::QBertFactory(std::weak_ptr<LevelComponent> pLevel, std::shared_ptr<dae::Texture2D> pTexture)
+std::shared_ptr<dae::GameObject> Factories::QBertFactory(std::weak_ptr<LevelComponent> pLevel, std::weak_ptr<EnemyManager> pEnemyManager, std::shared_ptr<dae::Texture2D> pTexture)
 {
 	std::shared_ptr<LevelComponent> pLevelShared = pLevel.lock();
 
 	glm::vec2 initPos = pLevelShared->GetTilePos(glm::ivec2{0, 0}); // (0,0) is the top of the pyramid
 	std::shared_ptr<dae::TransformComponent> pTransform = std::make_shared<dae::TransformComponent>(initPos.x, initPos.y, 0.f);
 
-	std::shared_ptr<QBertComponent> pQBert = std::make_shared<QBertComponent>(pLevel);
+	std::shared_ptr<QBertComponent> pQBert = std::make_shared<QBertComponent>(pLevel, pEnemyManager);
 
 	std::shared_ptr<dae::SpriteRenderComponent> pSpriteRenderer = std::make_shared<dae::SpriteRenderComponent>(pTexture);
 

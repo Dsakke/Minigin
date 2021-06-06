@@ -16,5 +16,6 @@ public:
 
 	virtual void operator()(glm::ivec2& gridCoords, std::weak_ptr<LevelComponent> pLevel) const = 0;
 	virtual void SetStartPos(glm::ivec2& gridCoords) = 0;
+	virtual bool GetIsHarmfull() const = 0;
 private:
 };

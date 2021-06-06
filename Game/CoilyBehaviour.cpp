@@ -40,3 +40,8 @@ void CoilyBehaviour::SetStartPos(glm::ivec2& gridCoords)
 	gridCoords.x = rand() % 2;
 	gridCoords.y = 1;
 }
+
+bool CoilyBehaviour::GetIsHarmfull() const
+{
+	return true;
+}

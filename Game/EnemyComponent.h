@@ -25,6 +25,8 @@ public:
 	void Reset();
 
 	void SetState(std::unique_ptr<IEnemyBehaviour> pBehaviour);
+	glm::ivec2 GetGridCoords() const;
+	bool GetIsharmfull() const;
 private:
 	glm::ivec2 m_GridCoords;
 

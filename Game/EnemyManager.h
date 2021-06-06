@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include <vector>
+#include "glm.hpp"
 
 namespace dae
 {
@@ -19,7 +20,9 @@ public:
 	void Draw() override;
 	void Initialize() override;
 
+	void Reset();
 	void AddEnemy(std::unique_ptr<IEnemyBehaviour> pBehaviour, std::shared_ptr<dae::Texture2D> pTexture);
+	std::shared_ptr<EnemyComponent> GetOverlapping(const glm::ivec2& pos);
 private:
 	bool ActivateEnemy();
 

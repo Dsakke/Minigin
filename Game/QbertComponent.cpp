@@ -4,11 +4,14 @@
 #include "LevelComponent.h"
 #include <stdexcept>
 #include "LifeComponent.h"
+#include "EnemyManager.h"
+#include "EnemyComponent.h"
 
-QBertComponent::QBertComponent(std::weak_ptr<LevelComponent> pLevel)
+QBertComponent::QBertComponent(std::weak_ptr<LevelComponent> pLevel, std::weak_ptr<EnemyManager> pEnemyManager)
 	: m_pTransform{}
 	, m_pLevelComponent{pLevel}
 	, m_pLifeComponent{}
+	, m_pEnemyManager{pEnemyManager}
 	, m_GridCoords{0,0}
 {
 }
@@ -73,7 +76,21 @@ void QBertComponent::MoveDown()
 
 void QBertComponent::Update()
 {
-
+	if (auto pEnemyManager = m_pEnemyManager.lock())
+	{
+		std::shared_ptr<EnemyComponent> pEnemy = pEnemyManager->GetOverlapping(m_GridCoords);
+		if (pEnemy)
+		{
+			if (pEnemy->GetIsharmfull())
+			{
+				pEnemyManager->Reset();
+				if (auto pLife = m_pLifeComponent.lock())
+				{
+					pLife->LoseLife();
+				}
+			}
+		}
+	}
 }
 
 void QBertComponent::Draw()

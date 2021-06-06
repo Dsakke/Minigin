@@ -89,3 +89,13 @@ void EnemyComponent::SetState(std::unique_ptr<IEnemyBehaviour> pBehaviour)
 		m_pTransform->SetPosition(pos.x, pos.y, 0);
 	}
 }
+
+glm::ivec2 EnemyComponent::GetGridCoords() const
+{
+	return m_GridCoords;
+}
+
+bool EnemyComponent::GetIsharmfull() const
+{
+	return m_pBehaviour->GetIsHarmfull();
+}

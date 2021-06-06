@@ -128,9 +128,13 @@ std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, const dae::Tr
     pObject->AddComponent(pLevelComp);
     scene.Add(pObject);
 
-    std::shared_ptr<dae::GameObject> pQbert = Factories::QBertFactory(pLevelComp, resourceManager.LoadTexture("qbert.png"));
+    std::shared_ptr<EnemyManager> pEnemyManager = std::make_shared<EnemyManager>(10, scene, pLevelComp, 5.f);
+    std::shared_ptr<dae::GameObject> pEnemyManagerObject = std::make_shared<dae::GameObject>();
+
+
 
     // Create QBert
+    std::shared_ptr<dae::GameObject> pQbert = Factories::QBertFactory(pLevelComp, pEnemyManager,resourceManager.LoadTexture("qbert.png"));
     std::shared_ptr<dae::Texture2D> pFullheart = resourceManager.LoadTexture("heart.png");
     std::shared_ptr<dae::Texture2D> pEmptyheart = resourceManager.LoadTexture("heartEmpty.png");
     std::shared_ptr<LifeComponent> pLife = std::make_shared<LifeComponent>(scene, glm::vec2{ 20, 40 }, pEmptyheart, pFullheart);
@@ -159,8 +163,6 @@ std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, const dae::Tr
 
     pLevelComp->AddScoreObserver(pScore);
 
-    std::shared_ptr<EnemyManager> pEnemyManager = std::make_shared<EnemyManager>(10, scene, pLevelComp, 5.f);
-    std::shared_ptr<dae::GameObject> pEnemyManagerObject = std::make_shared<dae::GameObject>();
     std::unique_ptr<CoilyBehaviour> pCoilyBehaviour = std::make_unique<CoilyBehaviour>(pQbertComponent, dae::ResourceManager::GetInstance().LoadTexture("Egg.png"), dae::ResourceManager::GetInstance().LoadTexture("Heart.png"));
     pEnemyManager->AddEnemy(std::move(pCoilyBehaviour), dae::ResourceManager::GetInstance().LoadTexture("Egg.png"));
     pEnemyManagerObject->AddComponent(pEnemyManager);
