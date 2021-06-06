@@ -6,6 +6,8 @@
 #include "LifeComponent.h"
 #include "EnemyManager.h"
 #include "EnemyComponent.h"
+#include "SoundLocator.h"
+#include "SoundSystem.h"
 
 QBertComponent::QBertComponent(std::weak_ptr<LevelComponent> pLevel, std::weak_ptr<EnemyManager> pEnemyManager)
 	: m_pTransform{}
@@ -28,6 +30,7 @@ void QBertComponent::MoveLeft()
 			return;
 		}
 	}
+	dae::SoundLocator::GetSoundSystem()->PlaySound("../Data/QBertJump.wav");
 	MoveToNewPos();
 }
 
@@ -44,6 +47,7 @@ void QBertComponent::MoveRight()
 		}
 	}
 	MoveToNewPos();
+	dae::SoundLocator::GetSoundSystem()->PlaySound("../Data/QBertJump.wav");
 }
 
 void QBertComponent::MoveUp()
@@ -58,6 +62,7 @@ void QBertComponent::MoveUp()
 		}
 	}
 	MoveToNewPos();
+	dae::SoundLocator::GetSoundSystem()->PlaySound("../Data/QBertJump.wav");
 }
 
 void QBertComponent::MoveDown()
@@ -72,6 +77,7 @@ void QBertComponent::MoveDown()
 		}
 	}
 	MoveToNewPos();
+	dae::SoundLocator::GetSoundSystem()->PlaySound("../Data/QBertJump.wav");
 }
 
 void QBertComponent::Update()
@@ -86,6 +92,7 @@ void QBertComponent::Update()
 				pEnemyManager->Reset();
 				if (auto pLife = m_pLifeComponent.lock())
 				{
+					dae::SoundLocator::GetSoundSystem()->PlaySound("../Data/QBertHit.wav");
 					pLife->LoseLife();
 				}
 			}
@@ -131,6 +138,7 @@ void QBertComponent::Initialize()
 
 void QBertComponent::FellOffGrid()
 {
+	dae::SoundLocator::GetSoundSystem()->PlaySound("../Data/QBertFall.wav");
 	m_GridCoords = glm::ivec2{ 0,0 };
 	MoveToNewPos();
 	auto pLife = m_pLifeComponent.lock();
