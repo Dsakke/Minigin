@@ -1,6 +1,6 @@
 #include "MiniginPCH.h"
 #include "Component.h"
-
+#include "GameObject.h"
 dae::Component::Component()
 	: m_pOwner{}
 	, m_IsInitialized{}
@@ -13,7 +13,10 @@ void dae::Component::RootUpdate()
 	{
 		RootInitialize();
 	}
-	Update();
+	if (m_pOwner.lock()->GetIsActive())
+	{
+		Update();
+	}
 }
 
 void dae::Component::RootInitialize()

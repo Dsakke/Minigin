@@ -34,10 +34,7 @@ void Scene::Update()
 {
 	for(auto& object : m_Objects)
 	{
-		if (object->GetIsActive())
-		{
-			object->Update();
-		}
+		object->Update();
 	}
 }
 
