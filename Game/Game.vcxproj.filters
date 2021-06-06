@@ -17,6 +17,9 @@
     <Filter Include="Commands\MovementCommands">
       <UniqueIdentifier>{6d0944c5-192c-4bb2-8ead-9bc54a1f40f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EnemyBehaviours">
+      <UniqueIdentifier>{a9c07553-d1ee-48d7-8b6e-cf2836102787}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -61,6 +64,15 @@
     <ClCompile Include="LevelSwitcher.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CoilyBehaviour.cpp">
+      <Filter>EnemyBehaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LevelLoader.h">
@@ -95,6 +107,18 @@
     </ClInclude>
     <ClInclude Include="LevelSwitcher.h">
       <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IEnemyBehaviour.h">
+      <Filter>EnemyBehaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="CoilyBehaviour.h">
+      <Filter>EnemyBehaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

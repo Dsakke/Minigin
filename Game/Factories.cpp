@@ -8,6 +8,8 @@
 #include "LevelComponent.h"
 #include "TextComponent.h"
 #include "ScoreComponent.h"
+#include "EnemyComponent.h"
+#include "SceneManager.h"
 
 std::shared_ptr<dae::GameObject> Factories::ScoreFactory(std::shared_ptr<dae::Font> pFont)
 {
@@ -73,3 +75,20 @@ std::shared_ptr<dae::GameObject> Factories::QBertFactory(std::weak_ptr<LevelComp
 
 	return pObject;
 }
+
+std::shared_ptr<dae::GameObject> Factories::EnemyFactory(std::weak_ptr<LevelComponent> pLevel, std::unique_ptr<IEnemyBehaviour>&& pBehaviour)
+{
+	std::shared_ptr<dae::GameObject> pObject = std::make_shared<dae::GameObject>();
+
+	std::shared_ptr<dae::TransformComponent> pTransform = std::make_shared<dae::TransformComponent>(0.f, 0.f, 0.f);
+	std::shared_ptr<EnemyComponent> pEnemy = std::make_shared<EnemyComponent>(pLevel, std::move(pBehaviour));
+	std::shared_ptr<dae::SpriteRenderComponent> pSpriteRenderer = std::make_shared<dae::SpriteRenderComponent>();
+
+	pObject->AddComponent(pTransform);
+	pObject->AddComponent(pEnemy);
+	pObject->AddComponent(pSpriteRenderer);
+
+	return pObject;
+}
+
+

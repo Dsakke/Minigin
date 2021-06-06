@@ -25,6 +25,8 @@
 #include "MoveUpCommand.h"
 #include "QbertComponent.h"
 #include "ScoreComponent.h"
+#include "EnemyManager.h"
+#include "CoilyBehaviour.h"
 
 std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, const dae::Transform& transfrom)
 {
@@ -157,5 +159,11 @@ std::shared_ptr<LevelComponent> LoadLevel(const std::string& file, const dae::Tr
 
     pLevelComp->AddScoreObserver(pScore);
 
+    std::shared_ptr<EnemyManager> pEnemyManager = std::make_shared<EnemyManager>(10, scene, pLevelComp, 5.f);
+    std::shared_ptr<dae::GameObject> pEnemyManagerObject = std::make_shared<dae::GameObject>();
+    std::unique_ptr<CoilyBehaviour> pCoilyBehaviour = std::make_unique<CoilyBehaviour>(pQbertComponent, dae::ResourceManager::GetInstance().LoadTexture("Egg.png"), dae::ResourceManager::GetInstance().LoadTexture("Heart.png"));
+    pEnemyManager->AddEnemy(std::move(pCoilyBehaviour), dae::ResourceManager::GetInstance().LoadTexture("Egg.png"));
+    pEnemyManagerObject->AddComponent(pEnemyManager);
+    scene.Add(pEnemyManagerObject);
     return pLevelComp;
 }
