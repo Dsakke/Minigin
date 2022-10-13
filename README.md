@@ -22,6 +22,9 @@ The sound uses the service locator pattern, this allows the user to easily chang
 3. SoundSystemLogger
     * This sound system exists for testing and debugging purposes, it contains another sound system and will just pass everything to that sound system while logging whatever sound is supposed to be playing.
 
+The user can also override the BaseSoundSystem class to make their own version.
+
+
 ##### Events
 There is a basic Event System in Minigin. It uses the observer pattern. I implemented this by writing a Observer class and Subject class. The Observer class has a virtual function OnNotify which the user should override with their desired behavior. The subject class contains function to add/remove observers, also containts a Notify function which passes a GameObject and an Event to all the observers it is subscribed to.
 
